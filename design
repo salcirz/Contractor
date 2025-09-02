@@ -1,0 +1,6 @@
+1) our database would be written in mongodb and this database would be used for our ML algorithim to categorize the images. 
+
+2) Using python we will make the machine learning algorithim with its libraries like tensorflow and scikit learn to roduce this,
+and also use pandas for data preprocessing, Flask for a framework and potentially  Django.
+
+3) the frontend would use html, JS, CSS to run the website and if we wanted to make an application version of it then we would use swift. 
