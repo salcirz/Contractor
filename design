@@ -1,5 +1,5 @@
 1) our database would be written in mongodb and this database would be used for our ML algorithim to categorize the images. 
-
+yyy
 2) Using python we will make the machine learning algorithim with its libraries like tensorflow and scikit learn to roduce this,
 and also use pandas for data preprocessing, Flask for a framework and potentially  Django.
 
