@@ -1,0 +1,32 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "Contractor",
+            "database": "data",
+            "username": "salvatorecirisano@compsci.adelphi.edu"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "compsci.adelphi.edu",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "Contractor",
+            "username": "salvatorecirisano",
+            "database": "data"
+        }
+    ]
+}
