@@ -2,8 +2,8 @@ from flask import Flask,request
 
 import mysql.connector
 
+app = Flask(__name__)
 
-app = Flask(_name_)
 def getdb ():
 
     conn = mysql.connector.connect(
