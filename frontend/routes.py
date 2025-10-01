@@ -8,8 +8,8 @@ def getdb ():
 
     conn = mysql.connector.connect(
 
-        hostname = "compsci.adelphi.edu",
-        username = "salvatorecirisano",
+        host = "compsci.adelphi.edu",
+        user= "salvatorecirisano",
         password = "",
         database = "salvatorecirisano"
 
@@ -26,7 +26,7 @@ def search():
 
     db = getdb()
 
-    cursor = db.cursor()
+    cursor = db.cursor(dictionary = True)
 
     cursor.execute(querey, (currentjob,))
 
