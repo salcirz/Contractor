@@ -1,14 +1,15 @@
-from flask import Flask,request
+from flask import Flask,request, render_template
 
 import mysql.connector
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=".")
 
 def getdb ():
 
     conn = mysql.connector.connect(
 
-        host = "compsci.adelphi.edu",
+        host = "localhost",
+        port = "3307",
         user= "salvatorecirisano",
         password = "",
         database = "salvatorecirisano"
@@ -17,6 +18,9 @@ def getdb ():
 
     return conn
 
+@app.route("/")
+def home():
+    return render_template("mainpicturepage.html")
 
 @app.route("/search", methods= ["POST"])
 def search():
