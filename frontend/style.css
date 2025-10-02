@@ -1,0 +1,49 @@
+
+:root{
+
+    background-color: black;
+}
+
+.background{
+    
+    width: 100vw;
+    height: 100vh;
+    
+    background-image: url("site images/websitebackground.jpg"); 
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat;
+
+   
+    display: flex;
+    flex-direction: column;      
+    justify-content: center;      
+    align-items: center; 
+
+    opacity: 40%;
+
+}
+
+.MainHeader{
+
+    display: inline-flex;
+    height: 100px;
+    width: 100%;
+    
+}
+
+.flex{
+    display: flex;
+}
+
+body , html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+
+
