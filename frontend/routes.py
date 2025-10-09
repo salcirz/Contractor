@@ -7,12 +7,11 @@ app = Flask(__name__, template_folder=".")
 def getdb ():
 
     conn = mysql.connector.connect(
-
-        host = "localhost",
-        port = "3307",
-        user= "salvatorecirisano",
-        password = "",
-        database = "salvatorecirisano"
+    host="salvatorecirisano.cd2am0uc4s40.us-east-2.rds.amazonaws.com",
+    user="admin",
+    password="Salvatorecontractor1!",               
+    database="salvatorecirisano",
+    port=3306
 
     )
 
@@ -26,7 +25,7 @@ def home():
 def search():
     currentjob = request.form["jobsearch"] 
 
-    querey = "Select * from picture where jobtype = %s"
+    querey = "Select * from picture where type = %s"
 
     db = getdb()
 
