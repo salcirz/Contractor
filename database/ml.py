@@ -1,12 +1,14 @@
 import csv
 import pymysql
 
+#Salvatorecontractor1!
+
 # Connect to DB
 conn = pymysql.connect(
-    host="localhost",
+    host="salvatorecirisano.cd2am0uc4s40.us-east-2.rds.amazonaws.com",
     port= 3306,
-    user="salvatorecirisano",
-    password="",
+    user="admin",
+    password="Salvatorecontractor1!",
     database="salvatorecirisano"
 
 )

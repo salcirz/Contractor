@@ -1,11 +1,11 @@
 import csv
-import pymysql
+import mysql.connector
 
 # Connect to MySQL on the server
-conn = pymysql.connect(
-    host="localhost",
-    user="salvatorecirisano",
-    password="",               # empty password
+conn = mysql.connector.connect(
+    host="salvatorecirisano.cd2am0uc4s40.us-east-2.rds.amazonaws.com",
+    user="admin",
+    password="Salvatorecontractor1!",               
     database="salvatorecirisano",
     port=3306
 )
@@ -24,7 +24,7 @@ with conn.cursor() as cursor:
 
             # Insert into table (id is auto-incremented)
             cursor.execute(
-            "INSERT INTO picture (jobtype, price,time, filepath, cost) VALUES (%s, %s, %s, %s, %s)",
+            "INSERT INTO picture (type, price,time, path, cost) VALUES (%s, %s, %s, %s, %s)",
             (jobtype, price,time, filepath, cost)
             )
 
