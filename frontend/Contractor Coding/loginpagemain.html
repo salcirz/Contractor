@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contractor Support - Account</title>
+  <link rel="stylesheet" href="login.css">
+  <script src="login.js" defer></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- Registration Form -->
+    <form id="registerForm">
+      <h2>Register</h2>
+
+      <label for="reg-email">Email</label>
+      <input type="email" id="reg-email" placeholder="Enter your email" required>
+
+      <label for="reg-username">Username</label>
+      <input type="text" id="reg-username" placeholder="Create a username" required>
+
+      <label for="reg-password">Password</label>
+      <input type="password" id="reg-password" placeholder="Create a password" required>
+
+      <button type="submit" class="btn">Register</button>
+
+      <p class="switch-form">
+        Already have an account? <a href="#" onclick="showForm('loginForm')">Log in</a>
+      </p>
+    </form>
+
+    <!-- Login Form -->
+    <form id="loginForm" style="display:none;">
+      <h2>Login</h2>
+
+      <label for="login-email">Email</label>
+      <input type="email" id="login-email" placeholder="Enter your email" required>
+
+      <label for="login-password">Password</label>
+      <input type="password" id="login-password" placeholder="Enter your password" required>
+
+      <button type="submit" class="btn">Login</button>
+
+      <p class="switch-form">
+        Don’t have an account? <a href="#" onclick="showForm('registerForm')">Create one</a>
+      </p>
+    </form>
+  </div>
+
+</body>
+
+</html>
