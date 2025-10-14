@@ -1,124 +1,102 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+
+body {
+  font-family: 'Arimo', sans-serif;
+}
 :root{
 
     background-color: black;
     margin: 0px;
     padding: 0px;
+    
     overflow-x: hidden;
     overflow-y: hidden;
     
 }
 
-.background::before{
-    
-    min-width: 100%;
-    min-height: 100vh;
-    content: "";
-    background-image: url("site images/websitebackground.jpg");
-    width: 100%;
-   
-    background-position: center;  
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    
+.background::before {
+  content: "";
+  position: fixed; /* fixed so it stays while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("site images/websitebackground.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+
+}
+
+#nav::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color:black;
+  opacity: .8;
+  z-index: 0; 
+  flex-direction: column;
+}
+
+#contractor{
+
+    font-family: 'Lato';
     display: flex;
-    opacity: 40%;
-    position: absolute;
-
-}
-
-
-#nav{
-
-    position: relative;
-    background-color: rgb(255, 255, 255, 0.6);
-    width: 100%px;
-    height: 65px;
-
-}
-#hamburg{
-
-    font-size: 40px;
-    position: absolute;
-    margin-left: 10px;
-    margin-top: 5px;
-    color: white;
-
-}
-
-.centernav{
-
-    position: relative;
-    width: 100%px;
-    height: 65px;
-    display: flex;
+    text-transform: uppercase;
+    opacity: 90%;
     justify-content: center;
     align-items: center;
-    font-size: 50px;
-    color: white;
-
+    color: blanchedalmond;
 }
 
-.item{
 
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  font-size: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#hamburg{
 
-}
-.one {
-  color: white;
-  z-index: 2;
-  transform: translateX(156px);
-}
-
-.two {
-  color: black;
-  z-index: 1;
-  transform: translateX(-156px);
-  
- 
-}
-
-#centernavb{
-
-    width: 100%;
-    height: 65px;
-    position: relative;
-    font-size: 50px;
-    color: black;
-    
-    
-}
-#hamburgb{
-
+    position: fixed;
     font-size: 40px;
-    position: absolute;
-    margin-left: 8px;
-    margin-top: 6px;
-    color: black;
+    margin-left: 15px; 
+    margin-top: -11px;
+    color: white;
+    z-index: 1;
+    
+    
+}
+
+#person{ 
+    
+    position: fixed;
+    display: flex;
+    justify-content: right;
+    left: 95vw;
+    top: 17px;
+}
+#person:hover{
+
+    fill: blanchedalmond;
+    cursor: pointer;
 
 }
+
+
 #hamburg:hover{
+   
+    margin-top: -10px;
+    color: blanchedalmond;
+    cursor: pointer;
 
-    margin-left: 8px;
-    margin-top: 6px;
-    cursor:pointer;
-
-}
-
-.flex{
-    display: "flex";
 }
 
 html, body{
     padding: 0;
     margin: 0;
+    width: 100%;
+    height: 100vh;
 }
 
 
