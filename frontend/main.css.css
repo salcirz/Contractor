@@ -49,10 +49,13 @@ body {
     font-family: 'Lato';
     display: flex;
     text-transform: uppercase;
-    opacity: 90%;
+    opacity: 99%;
     justify-content: center;
     align-items: center;
-    color: blanchedalmond;
+    color: rgb(252, 250, 247);
+    border-bottom: 1px solid white; 
+    padding-bottom: 12px;
+   
 }
 
 
