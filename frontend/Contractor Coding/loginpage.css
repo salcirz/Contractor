@@ -1,14 +1,13 @@
 body {
-  box-sizing: border-box;
+
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
-  background: url("site images/RegisterPageImage.webp") no-repeat center center fixed;
+  background: url("site images2/RegisterPageImage.webp") ;
   background-size: cover;
-  background-color: #218838;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
+
 }
 
 .container {
