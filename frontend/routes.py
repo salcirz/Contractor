@@ -4,6 +4,7 @@ import mysql.connector
 
 app = Flask(__name__, template_folder=".")
 
+#db connection
 def getdb ():
 
     conn = mysql.connector.connect(
@@ -17,10 +18,14 @@ def getdb ():
 
     return conn
 
+
+#route to main 
 @app.route("/")
 def home():
     return render_template("mainpicturepage.html")
 
+
+#heres the search for the db info 
 @app.route("/search", methods= ["POST"])
 def search():
     currentjob = request.form["jobsearch"] 
