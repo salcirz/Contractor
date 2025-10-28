@@ -1,19 +1,21 @@
 body {
 
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
-  background: url("site images2/RegisterPageImage.webp") ;
+  background: url("site images2/registerpageimage.jpeg") ;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
 
 }
 
 .container {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 30px;
-  border-radius: 12px;
+  background: rgba(244, 241, 199, 0.95);
+  padding: 20px;
+  border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   width: 350px;
   text-align: center;
