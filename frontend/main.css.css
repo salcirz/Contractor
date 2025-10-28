@@ -4,99 +4,121 @@
 
 body {
     font-family: 'Arimo', sans-serif;
-    background-image: url("site images/websitebackground.jpg");
+    background-image: url("site images/input image.jpg");
     overflow-x: hidden;
     overflow-y: hidden;
-    height: 100vh;
     background-size: cover;
+}
+
+.nav{
+    background-color:black;  
     display: flex;
-    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+ul{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding:0;
+}
+li{
+    display: flex;
     justify-content: center;
-    align-items: center;
-}
-
-.main{
-    width: 200px;
-    background-color: white;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    height: 250px; 
-    width: 250px;
-
-}
-
-
-
-#nav{
-  
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background-color:black;
-  opacity: .8;
-  z-index: 0; 
-  flex-direction: column;
 }
 
 #contractor{
-
     font-family: 'Lato';
+    color: rgb(252, 250, 247); 
+}
+
+
+.main{
+
+    margin:  10px;
+    height: 50vh;
     display: flex;
-    text-transform: uppercase;
-    opacity: 99%;
     justify-content: center;
     align-items: center;
-    color: rgb(252, 250, 247);
-    border-bottom: 1px solid white; 
-    padding-bottom: 12px;
-   
+    background-image: url("../contractorimages/1.jpg");
+    background-size: cover;
+    border: 4px solid black;
+    width: 40vw;
+    border-radius: 100px;
+}
+
+.maincenter{
+
+    display: inline-block;
 }
 
 
 #hamburg{
-
-    position: fixed;
-    font-size: 40px;
-    margin-left: 15px; 
-    margin-top: 10px;
-    color: white;
-    z-index: 1;
-    
-    
+    height: 50px;
+    color: red;
 }
 
-#person{ 
-    
-    position: fixed;
+
+
+#cloudlabel{
+
     display: flex;
-    justify-content: right;
-    left: 95vw;
-    top: 17px;
-}
-#person:hover{
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background-color: white;
+    border: 2px solid grey;
+    padding: 10px;
+    border-radius: 10px;
 
-    fill: blanchedalmond;
+}
+
+#cloudlabel:hover{
+
+    background-color: grey;
+    border: 2px solid white;
     cursor: pointer;
 
+}
+
+#cloudlogo{
+    padding-left: 2px;
+}
+#person{
+    color:white;
+    height:50px;
+    width: 50px;
+}
+#person:hover{
+    border-bottom: 3px solid green;
+    cursor: pointer;
 }
 
 #hamburg:hover{
-   
-    margin-top: 11px;
-    color: blanchedalmond;
+    border-bottom: 3px solid green;
     cursor: pointer;
-
 }
 
-html, body{
-    padding: 0;
-    margin: 0;
-  
+#stepone{
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    background: rgb(225, 7, 7, .9);
+    color: white;
+    text-shadow:  2px 2px 0px black;
+    border-radius: 100px;
+    font-family: 'Lato';
 }
 
+#insertimage{
 
+    display: flex;
+    justify-content: center;
+}
+html,body{
+    padding: 0px;
+    margin: 0px;
+}
 
 

@@ -7,35 +7,45 @@
         <title> Contrator.com</title>
         <link rel = "icon" href = "\site images\logo.png">
         <link rel = "stylesheet" href = "main.css.css">
+        <script src="https://unpkg.com/lucide@latest"></script>
     
     </head>
 
     <body>
-                
-                <nav id = "nav">
+                <nav class = "nav">
+                    
+                        <ul class ="nav">
 
-                            <p id = "hamburg"> &#9776;</p>
-                            <h1 id = "contractor">Contractor</h1>
+                           <li class="nav-left"><a> <img id = "hamburg" src="site images\hamburg.jpg" alt=""></a></li>
+                           <li class = "nav-center"><h1 id = "contractor">Contractor</h1></li>
+                           
+                            <li class = "nav-right">   
+                                <a href="Contractor Coding/loginpagemain.html">
+                                    <i id = "person" data-lucide ="user"></i>
+                                </a>
+                            </li>
                             
-                            <a href = "Contractor Coding/loginpagemain.html"><svg id = "person" xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user">
-                                <path d="M20 21a8 8 0 1 0-8-8 8 8 0 0 0 8 8Z"/>
-                                <path d="M4 36v-2a8 8 0 0 1 8-8h16a8 8 0 0 1 8 8v2"/>
-                            </svg> </a>
-                            
+                        </ul>
                 </nav>
                     
-            <div class = "main">
-            
-                <input type="image">
+            <div id = "main" class = "main">
+                <div id = "maincenter" class = "maincenter">
+                    <h1 id = "stepone"> Step 1</h1>
+                    <input id = "file" type="file" accept="image/*" style = "display: none;">
+                    <label id = "cloudlabel" for="file"> Upload<i id = "cloudlogo" data-lucide="cloud-upload"></i></label>  
+                </div>
+            </div>
 
+            <div>
+                
             </div>
 
 
+     <script>
+      lucide.createIcons();
+    </script>
 
-
+    <script src = "main.js"></script>
+    
     </body>
-
-
-
-
 </html>
