@@ -1,6 +1,6 @@
 
 body {
-  font-family: 'Arimo',sans-serif;
+  font-family: 'Arimo', sans-serif;
   background-color: #f5f6fa;
   color: #222;
   margin: 0;
@@ -8,6 +8,7 @@ body {
 }
 
 header {
+  font-family: 'Lato';
   background-color: #0c0c0c;
   color: white;
   text-align: center;
