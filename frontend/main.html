@@ -20,7 +20,7 @@
                            <li class = "nav-center"><h1 id = "contractor">Contractor</h1></li>
                            
                             <li class = "nav-right">   
-                                <a href="Contractor Coding/loginpagemain.html">
+                                <a href ="Contractor Coding/registerpage.html">
                                     <i id = "person" data-lucide ="user"></i>
                                 </a>
                             </li>
@@ -28,19 +28,39 @@
                         </ul>
                 </nav>
                     
+
+
             <div id = "main" class = "main">
                 <div id = "maincenter" class = "maincenter">
-                    <h1 id = "stepone"> Step 1</h1>
+                    <h1 class = "stepone"> Step 1</h1>
                     <input id = "file" type="file" accept="image/*" style = "display: none;">
                     <label id = "cloudlabel" for="file"> Upload<i id = "cloudlogo" data-lucide="cloud-upload"></i></label>  
                 </div>
             </div>
 
-            <div>
+
+
+
+            <div class= "step2">
+                <ul class = "step2">
+                    <li> <h1 class = "stepone">Step 2</h1></li>
+                    <li> 
+                        <select name="jobsearch" id="jobsearch">
+                            <option value="" selected disabled><h1>Select Job Type</h1></option>
+                            <option value="Lawn Mowing">Lawn Mowing</option>
+                            <option value="Mulch">Mulch</option>
+                            <option value="Seeding">Seeding</option>
+                            <option value="Junk">Junk</option>
+                        </select>
+                    </li>
+                    <li>
+                        <input class ="jobsearch" type="number" id = "numberinput" placeholder="Job Time (hrs)">
+                    </li>
+
+                </ul>
                 
-            </div>
-
-
+        
+            
      <script>
       lucide.createIcons();
     </script>

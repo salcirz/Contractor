@@ -6,9 +6,10 @@ body {
     font-family: 'Arimo', sans-serif;
     background-image: url("site images/input image.jpg");
     overflow-x: hidden;
-    overflow-y: hidden;
     background-size: cover;
+    background-color: black;
 }
+
 
 .nav{
     background-color:black;  
@@ -16,26 +17,21 @@ body {
     padding-left: 10px;
     padding-right: 10px;
 }
-ul{
-    display: flex;
+nav ul{
+    
     align-items: center;
     width: 100%;
     justify-content: space-between;
     padding:0;
 }
-li{
+nav li{
     display: flex;
     justify-content: center;
 }
 
-#contractor{
-    font-family: 'Lato';
-    color: rgb(252, 250, 247); 
-}
-
 
 .main{
-
+    
     margin:  10px;
     height: 50vh;
     display: flex;
@@ -49,17 +45,29 @@ li{
 }
 
 .maincenter{
-
     display: inline-block;
 }
 
+.step2{
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    width : 40vw;
+    border-radius: 100px;
+    list-style: none;
+    justify-content: space-between;
+}
 
 #hamburg{
     height: 50px;
     color: red;
 }
 
-
+#contractor{
+    font-family: 'Lato';
+    color: rgb(252, 250, 247); 
+}
 
 #cloudlabel{
 
@@ -100,19 +108,45 @@ li{
     cursor: pointer;
 }
 
-#stepone{
+.stepone{
     display: flex;
     padding: 10px;
     justify-content: center;
-    background: rgb(225, 7, 7, .9);
+    background: rgba(225, 7, 7, 0.9);
     color: white;
     text-shadow:  2px 2px 0px black;
     border-radius: 100px;
     font-family: 'Lato';
 }
+#jobsearch{
 
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid #444;
+  background-color: black;
+  color: white;
+  font-family: 'Arimo', sans-serif;
+  font-size: 16px;
+
+}
+
+#numberinput{
+    width:100px;
+    padding: 12px 18px;              
+    border-radius: 10px;             
+    border: 2px solid white;           
+    background-color: black;         
+    color: white;                     
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+    width: 120px;                    
+    text-align: center;    
+}
+#numberinput::placeholder{
+    color: white;
+
+}
 #insertimage{
-
     display: flex;
     justify-content: center;
 }
