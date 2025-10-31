@@ -50,13 +50,21 @@ nav li{
 
 .step2{
     margin: 10px;
-    padding: 10px;
+    padding : 5px;
     display: flex;
     align-items: center;
     width : 40vw;
-    border-radius: 100px;
+    height: 50px;
     list-style: none;
     justify-content: space-between;
+    
+    
+}
+
+#submitfield{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
 }
 
 #hamburg{
@@ -99,18 +107,19 @@ nav li{
     width: 50px;
 }
 #person:hover{
-    border-bottom: 3px solid green;
+    border-bottom: 3px solid rgba(225, 7, 7, 0.9);
     cursor: pointer;
 }
 
 #hamburg:hover{
-    border-bottom: 3px solid green;
+    border-bottom: 3px solid rgba(225, 7, 7, 0.9);
     cursor: pointer;
 }
 
 .stepone{
     display: flex;
     padding: 10px;
+    margin: 10px;
     justify-content: center;
     background: rgba(225, 7, 7, 0.9);
     color: white;
@@ -118,11 +127,13 @@ nav li{
     border-radius: 100px;
     font-family: 'Lato';
 }
+
+
 #jobsearch{
 
   padding: 10px 15px;
   border-radius: 10px;
-  border: 2px solid #444;
+  border: 2px solid white;
   background-color: black;
   color: white;
   font-family: 'Arimo', sans-serif;
@@ -130,6 +141,41 @@ nav li{
 
 }
 
+#jobsearch:hover{
+    cursor: pointer;
+}
+
+#buttonlabel{
+    border: 2px solid black;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    padding: 2px;
+    border-radius: 10px;
+    background-color: rgba(225, 7, 7, 0.9);
+    border: 2px solid rgba(225, 7, 7, 0.9); /* indigo */
+    box-shadow: 0 0 20px rgba(225, 7, 7, 0.9);
+    border-radius: 8px;
+    border: 1px solid black;
+
+}
+.button{
+
+    text-shadow:  2px 2px 0px black;
+    color: white;
+ 
+    font-family: 'lato';
+    
+    
+}
+
+#buttonlabel:hover{
+
+    box-shadow: 0 0 12px black;
+    cursor: pointer;
+
+}
 #numberinput{
     width:100px;
     padding: 12px 18px;              
