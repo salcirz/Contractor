@@ -5,8 +5,8 @@
     <head>
         
         <title> Contrator.com</title>
-        <link rel = "icon" href = "\site images\logo.png">
-        <link rel = "stylesheet" href = "main.css.css">
+        <link rel = "icon" href = "static\site images\logo.png">
+        <link rel="stylesheet" href="/static/main.css.css">
         <script src="https://unpkg.com/lucide@latest"></script>
     
     </head>
@@ -55,11 +55,17 @@
                                     <option value="Lawn Mowing">Lawn Mowing</option>
                                     <option value="Mulch">Mulch</option>
                                     <option value="Seeding">Seeding</option>
-                                    <option value="Junk">Junk</option>
+                                    <option value="Junk Removal">Junk Removal</option>
+                                    <option value="Foliage Removal">Foliage Removal</option>
+                                    <option value="Weed Whacking"> Weed Whacking</option>
+                                    <option value="Overgrown Grass">Overgrown Grass</option>
+                                    <option value="Bush Trimming">Bush Trimming</option>
+                                    <option value="Weed Pulling"> Weed Pulling</option>
+                                    <option value="Leaf Removal">Leaf Removal</option>
                                 </select>
                             </li>
                             <li>
-                                <input class ="jobsearch" type="number" id = "numberinput" placeholder="Job Time (hrs)">
+                                <input  name  = "numberinput" class ="jobsearch" type="number" id = "numberinput" placeholder="Job Time (hrs)">
                             </li>
                             
                             
@@ -80,21 +86,21 @@
             
                 <ul class = "displaystats">
                     <li class = "licla"> 
-                        <h1>pr</h1>
-                        <h1>hello</h1>
+                        <h1> {{price}} </h1>
+                        <h1>price</h1>
                     </li>
 
                     <li class = "licla"> 
-                        <h1>tin</h1>
+                        <h1> {{time}} </h1>
                         <h1>timing</h1>
+                        <h1>{{job}}</h1>
                     </li>
 
                     <li class = "licla"> 
-                        <h1>c</h1>
+                        <h1>{{cost}}</h1>
                         <h1>cost</h1>
                     </li>
                 </ul>
-                
             </div>
                 
         </section> 
@@ -105,7 +111,7 @@
             lucide.createIcons();
         </script>
             
-        <script src = "main.js"></script>
+        <script src = "static/main.js"></script>
             
     </body>
 
