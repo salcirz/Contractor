@@ -12,6 +12,8 @@
     </head>
 
     <body>
+
+        
                 <nav class = "nav">
                     
                         <ul class ="nav">
@@ -29,59 +31,82 @@
                 </nav>
                     
 
-            
-            <form action="/getprice" method="POST">
+        <section class = "notnav">
 
-                <div id = "main" class = "main">
-                    <div id = "maincenter" class = "maincenter">
-                        <h1 class = "stepone"> Step 1</h1>
-                        <input id = "file" type="file" accept="image/*" style = "display: none;">
-                        <label id = "cloudlabel" for="file"> Upload<i id = "cloudlogo" data-lucide="cloud-upload"></i></label>  
+            <div id = "left">
+
+                <form action="/getprice" method="POST">
+                    
+                    <div id = "main" class = "main">
+                        <div id = "maincenter" class = "maincenter">
+                            <h1 class = "stepone"> Step 1</h1>
+                            <input id = "file" type="file" accept="image/*" style = "display: none;">
+                            <label id = "cloudlabel" for="file"> Upload<i id = "cloudlogo" data-lucide="cloud-upload"></i></label>  
+                        </div>
                     </div>
-                </div>
-                
-                
-                <div class= "step2">
-                    <ul class = "step2">
-                        <li> <h1 class = "stepone">Step 2</h1></li>
-                        <li> 
-                            <select name="jobsearch" id="jobsearch">
-                                <option value="" selected disabled><h1>Select Job Type</h1></option>
-                                <option value="Lawn Mowing">Lawn Mowing</option>
-                                <option value="Mulch">Mulch</option>
-                                <option value="Seeding">Seeding</option>
-                                <option value="Junk">Junk</option>
-                            </select>
-                        </li>
-                        <li>
-                            <input class ="jobsearch" type="number" id = "numberinput" placeholder="Job Time (hrs)">
-                        </li>
-
-                        
-                        
-                        
-                        
-                        
-                    </ul>
-                </div>  
-                
-                <div id = "submitfield" class = "step2">
                     
-                    <button id = "but" type="submit" style = "display: none;"></button>
-                    <label id = "buttonlabel" for="but" class ="button"> <h1 class = "button">Estimate</h1></label>
                     
-
-                </div>
-    
-
-        </form>
+                    <div class= "step2">
+                        <ul class = "step2">
+                            <li> <h1 class = "stepone">Step 2</h1></li>
+                            <li> 
+                                <select name="jobsearch" id="jobsearch">
+                                    <option value="" selected disabled><h1>Select Job Type</h1></option>
+                                    <option value="Lawn Mowing">Lawn Mowing</option>
+                                    <option value="Mulch">Mulch</option>
+                                    <option value="Seeding">Seeding</option>
+                                    <option value="Junk">Junk</option>
+                                </select>
+                            </li>
+                            <li>
+                                <input class ="jobsearch" type="number" id = "numberinput" placeholder="Job Time (hrs)">
+                            </li>
+                            
+                            
+                        </ul>
+                    </div>  
+                    
+                    <div id = "submitfield" class = "step2">
+                        
+                        <button id = "but" type="submit" style = "display: none;"></button>
+                        <label id = "buttonlabel" for="but" class ="button"> <h1 class = "button">Estimate</h1></label>
+                        
+                        
+                    </div>
+                </form>
+            </div>
+                
+            <div class = "right">
             
-            
-     <script>
-      lucide.createIcons();
-    </script>
+                <ul class = "displaystats">
+                    <li class = "licla"> 
+                        <h1>pr</h1>
+                        <h1>hello</h1>
+                    </li>
 
-    <script src = "main.js"></script>
-    
+                    <li class = "licla"> 
+                        <h1>tin</h1>
+                        <h1>timing</h1>
+                    </li>
+
+                    <li class = "licla"> 
+                        <h1>c</h1>
+                        <h1>cost</h1>
+                    </li>
+                </ul>
+                
+            </div>
+                
+        </section> 
+
+        <footer style="height: 200px;"></footer>
+            
+        <script>
+            lucide.createIcons();
+        </script>
+            
+        <script src = "main.js"></script>
+            
     </body>
+
 </html>
