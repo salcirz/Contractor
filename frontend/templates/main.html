@@ -6,9 +6,10 @@
         
         <title> Contrator.com</title>
         <link rel = "icon" href = "static\site images\logo.png">
-        <link rel="stylesheet" href="/static/main.css.css">
+        <link rel="stylesheet" href="../static/main.css.css">
         <script src="https://unpkg.com/lucide@latest"></script>
-    
+        <script src="https://cdn.jsdelivr.net/npm/countup.js@2.6.2/dist/countUp.umd.js"></script>
+
     </head>
 
     <body>
@@ -22,7 +23,7 @@
                            <li class = "nav-center"><h1 id = "contractor">Contractor</h1></li>
                            
                             <li class = "nav-right">   
-                                <a href ="Contractor Coding/registerpage.html">
+                                <a href ="/mainpicturepage.html">
                                     <i id = "person" data-lucide ="user"></i>
                                 </a>
                             </li>
@@ -35,7 +36,7 @@
 
             <div id = "left">
 
-                <form action="/getprice" method="POST">
+                <form id = "estimateform" action="/getprice" method="POST">
                     
                     <div id = "main" class = "main">
                         <div id = "maincenter" class = "maincenter">
@@ -73,10 +74,10 @@
                     </div>  
                     
                     <div id = "submitfield" class = "step2">
+                        <button id = "buttonlabel" type="submit" class = "submit"><h1 class = "stepone">Estimate</h1>
+                        </button>
                         
-                        <button id = "but" type="submit" style = "display: none;"></button>
-                        <label id = "buttonlabel" for="but" class ="button"> <h1 class = "button">Estimate</h1></label>
-                        
+    
                         
                     </div>
                 </form>
@@ -86,19 +87,19 @@
             
                 <ul class = "displaystats">
                     <li class = "licla"> 
-                        <h1> {{price}} </h1>
-                        <h1>price</h1>
+                        <h1 id  ="priceoutput"></h1>
+                        <img id = "moneypic" src="../static/site images/moneypic.png" alt="hi">
                     </li>
 
                     <li class = "licla"> 
-                        <h1> {{time}} </h1>
-                        <h1>timing</h1>
-                        <h1>{{job}}</h1>
+                        <h1 id = "timeoutput"> </h1>
+                        <img id = "hourglasspic" src="../static/site images/hourglass.png" alt="hi">
+                        <h1 id = "joboutput"></h1>
                     </li>
 
                     <li class = "licla"> 
-                        <h1>{{cost}}</h1>
-                        <h1>cost</h1>
+                        <h1 id = "costoutput"></h1>
+                        <img id = "woodpic" src="../static/site images/wood.png" alt="hi">
                     </li>
                 </ul>
             </div>

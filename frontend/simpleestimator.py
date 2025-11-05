@@ -1,4 +1,4 @@
-from flask import Flask,request, render_template
+from flask import Flask,request, render_template, jsonify,send_from_directory
 
 import mysql.connector
 
@@ -24,6 +24,9 @@ def getdb ():
 def home():
     return render_template("main.html")
 
+@app.route("/mainpicturepage.html")
+def page ():
+    return render_template("registerpage.html")
 
 #heres the search for the db info 
 @app.route("/getprice", methods= ["POST"])
@@ -46,8 +49,15 @@ def search():
 
     db.close()
 
-    return render_template("main.html",price = price, cost = cost, time = totaltime, job = currentjob)
+    data = {
 
+        "price": price,
+        "cost": cost,
+        "job": currentjob,
+        "time": totaltime
+    }
+
+    return jsonify(data)
 
 if __name__ == "__main__":
     app.run(debug=True)
