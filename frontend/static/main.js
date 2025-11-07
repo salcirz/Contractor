@@ -31,7 +31,6 @@ document.getElementById("estimateform").addEventListener("submit",  async(ev) =>
    document.getElementById("joboutput").innerHTML = data.job;
    
    let count = 0;
-
    
    const interval = setInterval(() => {
 

@@ -1,4 +1,6 @@
-from flask import Flask,request, render_template, jsonify,send_from_directory
+from flask import Flask,request, render_template, jsonify, send_from_directory
+
+
 
 import mysql.connector
 
@@ -17,7 +19,6 @@ def getdb ():
     )
 
     return conn
-
 
 #route to main 
 @app.route("/")
@@ -59,13 +60,9 @@ def search():
 
     return jsonify(data)
 
+
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
-
-
-
-
-
