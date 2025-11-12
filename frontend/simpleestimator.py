@@ -1,3 +1,10 @@
+"""
+
+docker run -it --rm -p 5000:5000 -v "${PWD}:/app" -w /app contractor-dev python frontend/simpleestimator.py
+
+"""
+
+
 from flask import Flask,request, render_template, jsonify, send_from_directory
 
 
@@ -25,12 +32,19 @@ def getdb ():
 def home():
     return render_template("main.html")
 
-@app.route("/mainpicturepage.html")
+@app.route("/registerpage.html")
 def page ():
     return render_template("registerpage.html")
 
+@app.route("/loginpage.html")
+def getpage():
+    return render_template("loginpage.html")
+
+
+
+
 #heres the search for the db info 
-@app.route("/getprice", methods= ["POST"])
+@app.route("/getprice", methods = ["POST"])
 def search():
 
     currentjob = request.form["jobsearch"] 
@@ -60,9 +74,22 @@ def search():
 
     return jsonify(data)
 
+@app.route('/getimageprice', methods = ["POST"])
+def getimageprices():
+
+    jobtype = request.form["jobsearch"]
+
+    querey = "Select path from picture where type = %s"
+
+    db = getdb()
+    cursor = db.cursor(dictionary = True)
+    cursor.execute(querey, (currentjob,))
+    result = cursor.fetchall()
+    
+
 
 
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
