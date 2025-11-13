@@ -27,23 +27,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         const data = await res.json();
-
-        document.getElementById("joboutput").innerHTML = data.job;
    
         let count = 0;
 
         const interval = setInterval(() => {
 
             if(count <= data.price){
-                document.getElementById("priceoutput").innerHTML = count;
+                document.getElementById("priceoutput").innerHTML = count + '$';
 
             }   
             if(count <= data.time){
-                document.getElementById("timeoutput").innerHTML = count;
+                document.getElementById("timeoutput").innerHTML = count + ':00';
 
             }  
             if(count <= data.cost){
-                document.getElementById("costoutput").innerHTML = count;
+                document.getElementById("costoutput").innerHTML = count + '$';
 
             } 
 
@@ -64,6 +62,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         const imagedata = await images.json();
+
+        document.getElementById("job-type").innerHTML = images.jobtype;
+        document.getElementById("job-price").innerHTML = images.price;
+        document.getElementById("job-cost").innerHTML = images.cost;
+        document.getElementById("time").innerHTML = images.time;
+        document.getElementById("job-date").innerHTML = Date;
+        
+        
 
     });
 

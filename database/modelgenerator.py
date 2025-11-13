@@ -28,17 +28,12 @@ conn = mysql.connector.connect(
 
     )
 
-
-#get all imgs
-quereytype = "Junk Removal"
-querey = "SELECT * FROM picture WHERE type = %s"
-data = pd.read_sql(querey, conn, params=[quereytype])
-conn.close()
-
-#create # val for jobtypes
-jobtypes = list(data['type'].unique())
-data['job_type_encoded'] = data['type'].apply(lambda x: jobtypes.index(x))
-
+# Define all job types
+jobtypeslist = [
+    "Lawn Mowing", "Mulch", "Seeding", "Junk Removal",
+    "Foliage Removal", "Weed Whacking", "Overgrown Grass",
+    "Bush Trimming", "Weed Pulling", "Leaf Removal"
+]
 
 
 #img resize function data preprocessing
@@ -48,78 +43,6 @@ transform = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406],
                          std=[0.229, 0.224, 0.225])
 ])
-images, jobtypedata, labels = [], [], []
-
-
-#open all images and save with their data and pricing
-for index, row in data.iterrows():
-
-    imagepath = os.path.join("frontend","static", row['path'] + ".jpg")
-
-    if not os.path.exists(imagepath):
-        print(f"Image not found: {imagepath}, skipping.")
-        continue
-    else:
-        print("good")
-
-    img = Image.open(imagepath).convert("RGB")
-    img = transform(img)
-    images.append(img)
-    jobtypedata.append(row["job_type_encoded"])
-    labels.append([row["price"], row["cost"], row["time"]])
-
-
-testdata = labels[0]
-
-
-
-#stack images and create vectors for model to process price data
-images = torch.stack(images)
-jobtypedata = torch.tensor(jobtypedata,dtype=torch.float32)
-labels = torch.tensor(labels, dtype = torch.float32)
-
-label_mean = labels.mean(dim=0, keepdim=True)
-label_std = labels.std(dim=0, keepdim=True)
-labels_norm = (labels - label_mean) / label_std
-
-
-#dataset class for model interpretation
-class ContractorDataset(Dataset):
-    def __init__(self, images, jobtypes, labels):
-        self.images = images
-        self.jobtypes = jobtypes
-        self.labels = labels
-
-    def __len__(self):
-        return len(self.images)
-
-    def __getitem__(self, idx):
-        return {
-            "image": self.images[idx],
-            "job_type": self.jobtypes[idx],
-            "label": self.labels[idx]
-        }
-dataset = ContractorDataset(images, jobtypedata, labels_norm)
-dataloader = DataLoader(dataset, batch_size=8, shuffle=True)
-
-
-
-#pretrained model
-resnet = models.resnet18(weights = ResNet18_Weights.DEFAULT)
-
-
-#freeze layer weights to prevent overtraining
-for param in resnet.layer3.parameters():  # allow last 2 blocks to fine-tune
-    param.requires_grad = True
-
-for param in resnet.layer4.parameters():  # allow last layer4 block to fine-tune
-    param.requires_grad = True
-
-#keep all layers
-num_features = resnet.fc.in_features
-#add one feature (jobtype) 3 outputs price cost time
-resnet.fc = nn.Linear(num_features + 1, 3)
-
 
 
 class ResNetWithJobType(nn.Module):
@@ -150,32 +73,131 @@ class ResNetWithJobType(nn.Module):
         return res
     
 
-#create new trained model
-model = ResNetWithJobType(resnet)
+#dataset class for model interpretation
+class ContractorDataset(Dataset):
+    def __init__(self, images, jobtypes, labels):
+        self.images = images
+        self.jobtypes = jobtypes
+        self.labels = labels
+
+    def __len__(self):
+        return len(self.images)
+
+    def __getitem__(self, idx):
+        return {
+            "image": self.images[idx],
+            "job_type": self.jobtypes[idx],
+            "label": self.labels[idx]
+        }
 
 
-criterion = nn.MSELoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=.0001)
-epochs = 200
+for job in jobtypeslist:
 
-for epoch in range(epochs):
-    for batch in dataloader:
-        imgs = batch["image"]
-        jobs = batch["job_type"]
-        lbls = batch["label"]
+    images, jobtypedata, labels = [], [], []
 
-        optimizer.zero_grad()
-        outputs = model(imgs, jobs)
-        loss = criterion(outputs, lbls)
-        loss.backward()
-        optimizer.step()
-    print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item():.4f}")
+    #get all imgs
+    querey = "SELECT * FROM picture WHERE type = %s"
+    data = pd.read_sql(querey, conn, params=[job])
 
-# --- 9. Example prediction ---
-img_sample = images[0].unsqueeze(0)
-job_sample = jobtypedata[0].unsqueeze(0)
-print(jobtypedata[0])
-pred_norm = model(img_sample, job_sample)
-pred = pred_norm * label_std + label_mean  # den
-print("Predicted [price, cost, time]:", pred.detach().tolist())
-print("real price cost time" , testdata )
+
+    #create # val for jobtypes
+    jobtypes = list(data['type'].unique())
+    data['job_type_encoded'] = data['type'].apply(lambda x: jobtypes.index(x))
+
+    print("now modeling for" , job)
+    #open all images and save with their data and pricing
+    for index, row in data.iterrows():
+
+        imagepath = os.path.join("frontend","static", row['path'] + ".jpg")
+
+        if not os.path.exists(imagepath):
+            print(f"Image not found: {imagepath}, skipping.")
+            continue
+        else:
+            print("good")
+
+        img = Image.open(imagepath).convert("RGB")
+        img = transform(img)
+        images.append(img)
+        jobtypedata.append(row["job_type_encoded"])
+        labels.append([row["price"], row["cost"], row["time"]])
+
+
+    testdata = labels[0]
+
+
+    #stack images and create vectors for model to process price data
+    images = torch.stack(images)
+    jobtypedata = torch.tensor(jobtypedata,dtype=torch.float32)
+    labels = torch.tensor(labels, dtype = torch.float32)
+
+    label_mean = labels.mean(dim=0, keepdim=True)
+    label_std = labels.std(dim=0, keepdim=True)
+    labels_norm = (labels - label_mean) / label_std
+
+
+
+    dataset = ContractorDataset(images, jobtypedata, labels_norm)
+    dataloader = DataLoader(dataset, batch_size=8, shuffle=True)
+
+
+
+    #pretrained model
+    resnet = models.resnet18(weights = ResNet18_Weights.DEFAULT)
+
+
+    #freeze layer weights to prevent overtraining
+    for param in resnet.layer3.parameters():  # allow last 2 blocks to fine-tune
+        param.requires_grad = True
+
+    for param in resnet.layer4.parameters():  # allow last layer4 block to fine-tune
+        param.requires_grad = True
+
+    #keep all layers
+    num_features = resnet.fc.in_features
+    #add one feature (jobtype) 3 outputs price cost time
+    resnet.fc = nn.Linear(num_features + 1, 3)
+
+
+    #create new trained model
+    model = ResNetWithJobType(resnet)
+
+
+    criterion = nn.MSELoss()
+    optimizer = torch.optim.Adam(model.parameters(), lr=.0001)
+    epochs = 200
+
+    for epoch in range(epochs):
+        for batch in dataloader:
+            imgs = batch["image"]
+            jobs = batch["job_type"]
+            lbls = batch["label"]
+
+            optimizer.zero_grad()
+            outputs = model(imgs, jobs)
+            loss = criterion(outputs, lbls)
+            loss.backward()
+            optimizer.step()
+        print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item():.4f}")
+
+    # --- 9. Example prediction ---
+    img_sample = images[0].unsqueeze(0)
+    job_sample = jobtypedata[0].unsqueeze(0)
+    print(jobtypedata[0])
+    pred_norm = model(img_sample, job_sample)
+    pred = pred_norm * label_std + label_mean  # den
+    print("Predicted [price, cost, time]:", pred.detach().tolist())
+    print("real price cost time" , testdata )
+
+
+    modelfile= os.path.join("frontend", "models", job + "_mode.pth")
+    torch.save({
+        "model_state_dict": model.state_dict(),
+        "label_mean": label_mean,
+        "label_std": label_std
+    }, modelfile)
+
+    print(f"Saved model to {modelfile}")
+
+nn.close()
+conn.close()

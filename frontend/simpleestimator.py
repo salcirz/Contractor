@@ -2,10 +2,16 @@
 
 docker run -it --rm -p 5000:5000 -v "${PWD}:/app" -w /app contractor-dev python frontend/simpleestimator.py
 
+
 """
 
 
 from flask import Flask,request, render_template, jsonify, send_from_directory
+import torch
+from torchvision import transforms
+from PIL import Image
+import os
+import torch.nn as nn
 
 
 
@@ -39,6 +45,11 @@ def page ():
 @app.route("/loginpage.html")
 def getpage():
     return render_template("loginpage.html")
+
+@app.route("/reportpage")
+def getreportpage():
+    return render_template("reportpage.html")
+
 
 
 
@@ -74,22 +85,100 @@ def search():
 
     return jsonify(data)
 
-@app.route('/getimageprice', methods = ["POST"])
+
+
+
+
+@app.route('/getimageprice', methods=["POST"])
 def getimageprices():
-
     jobtype = request.form["jobsearch"]
+    image = request.files["fileinput"]
 
-    querey = "Select path from picture where type = %s"
+    # Image transform
+    transform = transforms.Compose([
+        transforms.Resize((64, 64)),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                             std=[0.229, 0.224, 0.225])
+    ])
 
-    db = getdb()
-    cursor = db.cursor(dictionary = True)
-    cursor.execute(querey, (currentjob,))
-    result = cursor.fetchall()
+    # Load model checkpoint
+    modelpath = os.path.join("frontend", "models", jobtype + "_mode.pth")
+    if not os.path.exists(modelpath):
+        raise FileNotFoundError(f"Model not found: {modelpath}")
+
+    checkpoint = torch.load(modelpath, map_location="cpu")
+
+    # Recreate model architecture
+    from torchvision import models
+    resnet = models.resnet18(weights=None)
+    num_features = resnet.fc.in_features
+    resnet.fc = nn.Linear(num_features + 1, 3)  # +1 for job type
+    model = ResNetWithJobType(resnet)
+    model.load_state_dict(checkpoint["model_state_dict"])
+    model.eval()
+
+    label_mean = checkpoint["label_mean"]
+    label_std = checkpoint["label_std"]
+
+    # Preprocess image
+    img = Image.open(image.stream).convert("RGB")
+    img = transform(img).unsqueeze(0)
+
+    # Encode job type numerically (match training encoding)
+    jobtypeslist = [
+        "Lawn Mowing", "Mulch", "Seeding", "Junk Removal",
+        "Foliage Removal", "Weed Whacking", "Overgrown Grass",
+        "Bush Trimming", "Weed Pulling", "Leaf Removal"
+    ]
+    job_index = torch.tensor([jobtypeslist.index(jobtype)], dtype=torch.float32)
+
+    # Predict
+    with torch.no_grad():
+        output_norm = model(img, job_index)
+        output = output_norm * label_std + label_mean
+
+    output = output.squeeze().tolist()
+
+    result = {
+        "jobtype": jobtype,
+        "price": float(output[0]),
+        "cost": float(output[1]),
+        "time": float(output[2])
+    }
+
+    print("Predicted:", result)
+    return jsonify(result)
+
     
 
+class ResNetWithJobType(nn.Module):
+    def __init__(self, base_model):
+        super().__init__()
+        self.base_model = base_model
 
+    def forward(self, image, job_type):
+        # Run through ResNet layers
+        x = self.base_model.conv1(image)
+        x = self.base_model.bn1(x)
+        x = self.base_model.relu(x)
+        x = self.base_model.maxpool(x)
 
+        x = self.base_model.layer1(x)
+        x = self.base_model.layer2(x)
+        x = self.base_model.layer3(x)
+        x = self.base_model.layer4(x)
 
+        x = self.base_model.avgpool(x)
+        x = torch.flatten(x, 1)
+
+        # Add job type feature
+        job_type = job_type.unsqueeze(1)
+        x = torch.cat([x, job_type], dim=1)
+
+        # Final output
+        out = self.base_model.fc(x)
+        return out
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

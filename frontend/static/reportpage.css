@@ -5,15 +5,47 @@ body {
   color: #222;
   margin: 0;
   padding: 0;
+  background-size: cover;
+
 }
 
 header {
   font-family: 'Lato';
   background-color: #0c0c0c;
+  width: 100%;
   color: white;
   text-align: center;
   padding: 1.5rem 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 0px;
+  
+  
+}
+
+#person{
+    color:white;
+    height:50px;
+    width: 50px;
+    margin-right: 20px;
+    
+}
+
+#person:hover{
+
+  border-bottom: 5px solid red;
+}
+
+.nav{
+  
+  padding: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+.nav li{
+  margin-left: 0px;
+  margin-right: 20px;
+  padding: 0px;
 }
 
 

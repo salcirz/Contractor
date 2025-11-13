@@ -41,7 +41,7 @@
                     <div id = "main" class = "main">
                         <div id = "maincenter" class = "maincenter">
                             <h1 class = "stepone"> Step 1</h1>
-                            <input id = "file" type="file" accept="image/*" style = "display: none;">
+                            <input name = "fileinput" id = "file" type="file" accept="image/*" style = "display: none;">
                             <label id = "cloudlabel" for="file"> Upload<i id = "cloudlogo" data-lucide="cloud-upload"></i></label>  
                         </div>
                     </div>
@@ -77,34 +77,34 @@
                         <button id = "buttonlabel" type="submit" class = "submit"><h1 class = "stepone">Estimate</h1>
                         </button>
                         
-    
-                        
                     </div>
                 </form>
             </div>
                 
             <div class = "right">
-            
+                
                 <ul class = "displaystats">
                     <li class = "licla"> 
-                        <h1 id  ="priceoutput"></h1>
+                        <h1 class="text" id  ="priceoutput">$$$</h1>
                         <img id = "moneypic" src="../static/site images/moneypic.png" alt="hi">
                     </li>
 
                     <li class = "licla"> 
-                        <h1 id = "timeoutput"> </h1>
-                        <img id = "hourglasspic" src="../static/site images/hourglass.png" alt="hi">
-                        <h1 id = "joboutput"></h1>
+                        <h1 class="text" id = "timeoutput">00:00</h1>
+                        <div id = "c"><img id = "hourglasspic" src="../static/site images/hourglass.png" alt=""></div>
+                        <a href="/reportpage"><button id = "reportbutton" ><h3 class="textsh">Full Report </h3></button></a>
                     </li>
 
                     <li class = "licla"> 
-                        <h1 id = "costoutput"></h1>
+                        <h1 class="text" id = "costoutput">$$$</h1>
                         <img id = "woodpic" src="../static/site images/wood.png" alt="hi">
                     </li>
                 </ul>
             </div>
                 
+            
         </section> 
+        
 
         <footer style="height: 200px;"></footer>
             
