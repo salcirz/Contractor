@@ -6,18 +6,21 @@ docker run -it --rm -p 5000:5000 -v "${PWD}:/app" -w /app contractor-dev python 
 """
 
 
-from flask import Flask,request, render_template, jsonify, send_from_directory
+from flask import Flask,request, render_template, jsonify, send_from_directory, session
 import torch
 from torchvision import transforms
 from PIL import Image
 import os
 import torch.nn as nn
+from io import BytesIO
+import base64
 
 
 
 import mysql.connector
 
 app = Flask(__name__)
+app.secret_key = "secretttkeke"
 
 #db connection
 def getdb ():
@@ -49,6 +52,10 @@ def getpage():
 @app.route("/reportpage")
 def getreportpage():
     return render_template("reportpage.html")
+
+@app.route("/getinfo")
+def getinfo():
+    return jsonify(session["result"])
 
 
 
@@ -83,9 +90,8 @@ def search():
         "time": totaltime
     }
 
+    session['linearoutput'] = data
     return jsonify(data)
-
-
 
 
 
@@ -139,18 +145,20 @@ def getimageprices():
         output = output_norm * label_std + label_mean
 
     output = output.squeeze().tolist()
+   
 
     result = {
         "jobtype": jobtype,
-        "price": float(output[0]),
-        "cost": float(output[1]),
-        "time": float(output[2])
+        "price": round(float(output[0]), 2),
+        "cost": round(float(output[1]), 2),
+        "time": round(float(output[2]), 2), 
     }
-
+    
     print("Predicted:", result)
+    
+    session["result"] = result    
     return jsonify(result)
 
-    
 
 class ResNetWithJobType(nn.Module):
     def __init__(self, base_model):

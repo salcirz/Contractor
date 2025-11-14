@@ -53,24 +53,20 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
         },2);
-
-        const images = await fetch('/getimageprice', {
+        
+        const img = await fetch('/getimageprice', {
 
             method: 'POST',
             body: form
 
         });
 
-        const imagedata = await images.json();
+        document.getElementById("reportbutton").style.opacity = '100%';
+        document.getElementById("reportbutton").style.pointerEvents = 'all';
+        document.getElementById("rlink").style.pointerEvents = 'all';
 
-        document.getElementById("job-type").innerHTML = images.jobtype;
-        document.getElementById("job-price").innerHTML = images.price;
-        document.getElementById("job-cost").innerHTML = images.cost;
-        document.getElementById("time").innerHTML = images.time;
-        document.getElementById("job-date").innerHTML = Date;
-        
-        
 
+        
     });
 
 
