@@ -5,7 +5,6 @@ docker run -it --rm -p 5000:5000 -v "${PWD}:/app" -w /app contractor-dev python 
 
 """
 
-
 from flask import Flask,request, render_template, jsonify, send_from_directory, session
 import torch
 from torchvision import transforms
@@ -14,8 +13,6 @@ import os
 import torch.nn as nn
 from io import BytesIO
 import base64
-
-
 
 import mysql.connector
 
