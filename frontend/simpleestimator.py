@@ -13,8 +13,12 @@ import os
 import torch.nn as nn
 from io import BytesIO
 import base64
-
 import mysql.connector
+
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = "secretttkeke"
@@ -53,7 +57,6 @@ def getreportpage():
 @app.route("/getinfo")
 def getinfo():
     return jsonify(session["result"])
-
 
 
 
