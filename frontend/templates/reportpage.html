@@ -47,7 +47,7 @@
     </div>
 
 
-    <div class="image-section">
+    <div id = "imagesection" class="image-section">
 
        
     </div>
@@ -73,7 +73,8 @@
       document.getElementById("job-cost").textContent = `Cost: ${datajson.cost}`;
       document.getElementById("job-price").textContent = `Price: ${datajson.price}`;
       document.getElementById("time").textContent = `Time: ${datajson.time}`;
-      document.getElementById("job-date").textContent = `Date Assigned: ${new Date().toLocaleString()}`;
+      document.getElementById("job-date").textContent = `Date Assigned: ${new Date().toLocaleDateString()}`;
+      document.getElementById("imagesection").style.backgroundImage = `url(${datajson.file})` ;
       
     }
 

@@ -103,9 +103,9 @@ nav li{
     border: 2px solid grey;
     padding: 10px;
     border-radius: 10px;
-   
 
 }
+
 
 #cloudlabel:hover{
     box-shadow: 0 0 20px rgba(2, 2, 2, 0.9);
@@ -183,7 +183,6 @@ nav li{
 
 }
 
-
 #jobsearch{
 
   padding: 10px 15px;
@@ -193,6 +192,7 @@ nav li{
   color: white;
   font-family: 'Arimo', sans-serif;
   font-size: 14px;
+  animation: pulseGlow 2s infinite;
 
 }
 
@@ -201,6 +201,11 @@ nav li{
     background-color: rgba(25, 225, 7, 0.5);;
 }
 
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 5px rgba(0,255,255,0.3); }
+  50% { box-shadow: 0 0 20px rgba(0,255,255,0.9); }
+  100% { box-shadow: 0 0 5px rgba(0,255,255,0.3); }
+}
 #buttonlabel{
     border: 2px solid black;
     margin: 10px;
@@ -281,6 +286,7 @@ nav li{
 
 }
 #numberinput{
+    animation: pulseGlow 2s infinite;
     width:100px;
     padding: 12px 18px;              
     border-radius: 10px;             

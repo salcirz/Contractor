@@ -12,14 +12,13 @@ from PIL import Image
 import os
 import torch.nn as nn
 from io import BytesIO
-import base64
 import mysql.connector
-
 from dotenv import load_dotenv
+import boto3
 import os
+import uuid
 
 load_dotenv()
-
 
 
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
@@ -27,8 +26,17 @@ AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 AWS_REGION = os.getenv("AWS_REGION")
 S3_BUCKET = os.getenv("S3_BUCKET")
 
+s3 = boto3.client(
+    "s3",
+    aws_access_key_id=AWS_ACCESS_KEY_ID,
+    aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+    region_name=AWS_REGION
+)
+
 app = Flask(__name__)
 app.secret_key = "secretttkeke"
+
+
 
 #db connection
 def getdb ():
@@ -107,6 +115,15 @@ def getimageprices():
     jobtype = request.form["jobsearch"]
     image = request.files["fileinput"]
 
+    image_bytes = image.read()
+    image_stream = BytesIO(image_bytes)  # For PIL processing
+    upload_stream = BytesIO(image_bytes) # For S3 upload
+
+
+    filename = f"{uuid.uuid4()}_{image.filename}"
+
+    s3.upload_fileobj(upload_stream, Bucket= S3_BUCKET, Key=filename)
+
     # Image transform
     transform = transforms.Compose([
         transforms.Resize((64, 64)),
@@ -135,7 +152,7 @@ def getimageprices():
     label_std = checkpoint["label_std"]
 
     # Preprocess image
-    img = Image.open(image.stream).convert("RGB")
+    img = Image.open(image_stream).convert("RGB")
     img = transform(img).unsqueeze(0)
 
     # Encode job type numerically (match training encoding)
@@ -152,13 +169,17 @@ def getimageprices():
         output = output_norm * label_std + label_mean
 
     output = output.squeeze().tolist()
-   
+     
+    file_url = (
+        f"https://{os.getenv('S3_BUCKET')}.s3.{os.getenv('AWS_REGION')}.amazonaws.com/{filename}"
+    )
 
     result = {
         "jobtype": jobtype,
         "price": round(float(output[0]), 2),
         "cost": round(float(output[1]), 2),
         "time": round(float(output[2]), 2), 
+        "file" : file_url,
     }
     
     print("Predicted:", result)
