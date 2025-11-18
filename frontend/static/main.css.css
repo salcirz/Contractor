@@ -8,11 +8,18 @@ body {
     overflow-x: hidden;
     background-size: cover;
     background-color: black;
+    background-position: center;
+
 }
 
 
 .notnav{
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 
 
@@ -21,13 +28,14 @@ body {
     display: flex;
     padding-left: 10px;
     padding-right: 10px;
+    
 }
 nav ul{
     
     align-items: center;
     width: 100%;
     justify-content: space-between;
-    padding:0;
+    padding:0px;
 }
 nav li{
     display: flex;
@@ -70,12 +78,11 @@ nav li{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
-    margin-left: 100px;
     width: 100vw;
     border-radius: 100px;
 
 }
+
 
 #submitfield{
     display: flex;
@@ -119,7 +126,7 @@ nav li{
     padding-left: 2px;
 }
 #person{
-    color:white;
+    color: white;
     height:50px;
     width: 50px;
 }
@@ -297,6 +304,7 @@ nav li{
     font-size: 14px;
     width: 120px;                    
     text-align: center;    
+    
 }
 #numberinput::placeholder{
     color: white;

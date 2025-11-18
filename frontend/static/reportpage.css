@@ -2,7 +2,6 @@
 body {
   font-family: 'Arimo', sans-serif;
   background-color: #f5f6fa;
-  color: #222;
   margin: 0;
   padding: 0;
   background-size: cover;
@@ -11,18 +10,22 @@ body {
 
 header {
   font-family: 'Lato';
-  background-color: #0c0c0c;
   width: 100%;
-  color: white;
+  color: black;
   text-align: center;
-  padding: 1.5rem 0;
+  padding: 5px;
   margin: 0px;
   
   
 }
 
+.t{
+  font-family: 'Lato';
+
+}
+
 #person{
-    color:white;
+    color: black;
     height:50px;
     width: 50px;
     margin-right: 20px;
@@ -35,12 +38,12 @@ header {
 }
 
 .nav{
-  
   padding: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
   list-style: none;
+
 }
 .nav li{
   margin-left: 0px;
@@ -80,9 +83,11 @@ header {
 .info-section p {
   width: 48%;
   margin: 0.5rem 0;
-  font-size: 1.1rem;
+  font-size: 20px;
   color: #333;
 }
+
+
 
 .image-section {
   background-image: url("site images/input image.jpg");

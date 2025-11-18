@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Job Report</title>
+  <link rel = "icon" href = "static\site images\logo.png">
   <link rel="stylesheet" href="../static/reportpage.css">
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/countup.js@2.6.2/dist/countUp.umd.js"></script>
@@ -39,11 +40,11 @@
     
     <div class="info-section">
       
-      <h2 id="job-type">Job Type: --</h2>
-      <p id="job-price">Price: --</p>
-      <p id="job-cost">Cost: --</p>
-      <p id="time">Time: --</p>
-      <p id="job-date">Date Assigned: --</p>
+      <h2 class = "t" id="job-type">Job Type: --</h2>
+      <p class = "t" id="job-price">Price: --</p>
+      <p class = "t" id="job-cost">Cost: --</p>
+      <p class = "t"  id="time">Time: --</p>
+      <p class = "t" id="job-date">Date Assigned: --</p>
     </div>
 
 
@@ -69,7 +70,7 @@
       const response = await fetch("/getinfo", { cache: "no-cache" });
       const datajson = await response.json();
 
-      document.getElementById("job-type").textContent = `Job Type: ${datajson.jobtype}`;
+      document.getElementById("job-type").textContent = `${datajson.jobtype}`;
       document.getElementById("job-cost").textContent = `Cost: ${datajson.cost}`;
       document.getElementById("job-price").textContent = `Price: ${datajson.price}`;
       document.getElementById("time").textContent = `Time: ${datajson.time}`;

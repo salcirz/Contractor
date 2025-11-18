@@ -216,5 +216,27 @@ class ResNetWithJobType(nn.Module):
         out = self.base_model.fc(x)
         return out
 
+@app.route('/checkusername')
+def usernameexists():
+
+    db = getdb()
+
+    cursor = db.cursor(dictionary= True)
+
+    tempuser = request.form["username"]
+
+    querey = "select * from login where username = %s"
+
+    cursor.execute(querey, (tempuser,))
+
+    result = cursor.fetchall()
+
+    if not result:
+        return False
+    else:
+        return True 
+
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
