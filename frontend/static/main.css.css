@@ -4,30 +4,45 @@
 
 body {
     font-family: 'Arimo', sans-serif;
-    background-image: url("site images/input image.jpg");
     overflow-x: hidden;
     background-size: cover;
-    background-color: black;
     background-position: center;
 
+}
+
+#firstsection{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("site images/bg.png");
+    height: 100vh;
+    
 }
 
 
 .notnav{
     width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 
 }
 
+#estimateform{
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    margin: 10px;
+    width: 100%;
+    
+}
+
 
 .nav{
-    background-color:black;  
+    
     display: flex;
     padding-left: 10px;
     padding-right: 10px;
+    justify-content: space-between;
     
 }
 nav ul{
@@ -42,34 +57,52 @@ nav li{
     justify-content: center;
 }
 
+.nav-center{
+
+    display: flex;
+    align-items: center;
+
+}
+#logo{
+
+    height: 20px;
+
+}
+
 
 .main{
     
+    
     margin:  10px;
-    height: 50vh;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("contractorimages/1.jpg");
+    background-image: url("site images/input\ image.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     border: 4px solid black;
-    width: 40vw;
+    width: px;
     border-radius: 100px;
 }
 
+
+
 .maincenter{
     display: inline-block;
+    
 }
 
 .step2{
-    margin: 10px;
+    margin: 0px;
     padding : 5px;
     display: flex;
     align-items: center;
-    width : 40vw;
+    width :inherit;
     height: 50px;
     list-style: none;
-    justify-content: space-between;
+    justify-content: center;
     
     
 }
@@ -78,7 +111,7 @@ nav li{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: inherit;
     border-radius: 100px;
 
 }
@@ -96,12 +129,15 @@ nav li{
 }
 
 #contractor{
-    font-family: 'Lato';
-    color: rgb(252, 250, 247); 
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+
+    color: rgb(44, 71, 40);
 }
 
 #cloudlabel{
 
+    height:10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,6 +146,8 @@ nav li{
     border: 2px solid grey;
     padding: 10px;
     border-radius: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
 
 }
 
@@ -126,7 +164,7 @@ nav li{
     padding-left: 2px;
 }
 #person{
-    color: white;
+    color: rgb(44, 71, 40);
     height:50px;
     width: 50px;
 }
@@ -199,7 +237,8 @@ nav li{
   color: white;
   font-family: 'Arimo', sans-serif;
   font-size: 14px;
-  animation: pulseGlow 2s infinite;
+  margin: 10px;
+  
 
 }
 
@@ -214,18 +253,30 @@ nav li{
   100% { box-shadow: 0 0 5px rgba(0,255,255,0.3); }
 }
 #buttonlabel{
+    align-items: center;
+    height: 50px;
     border: 2px solid black;
-    margin: 10px;
+    margin: 0px;
     display: flex;
     justify-content: center;
-    width: 90%;
-    padding: 2px;
+    width: 100%;
+    padding: 1px;
     border-radius: 10px;
     background-color: rgba(25, 225, 7, 0.5);
     border: 2px solid rgba(25, 225, 7, 0.5); 
     box-shadow: 0 0 20px rgba(25, 225, 7, 0.5);
     border-radius: 8px;
     border: 1px solid black;
+
+}
+
+#words{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    margin-top: 130px;
+    margin-left: 100px;
+    color: black;
 
 }
 #buttonlabel:hover{
@@ -292,8 +343,12 @@ nav li{
     width: 150px;
 
 }
+#whi{
+
+    color: white;
+}
 #numberinput{
-    animation: pulseGlow 2s infinite;
+    
     width:100px;
     padding: 12px 18px;              
     border-radius: 10px;             
@@ -304,7 +359,7 @@ nav li{
     font-size: 14px;
     width: 120px;                    
     text-align: center;    
-    
+
 }
 #numberinput::placeholder{
     color: white;
@@ -325,6 +380,7 @@ nav li{
     background-color: none;
 }
 html,body{
+    
     padding: 0px;
     margin: 0px;
 }
