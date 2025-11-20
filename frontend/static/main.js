@@ -67,15 +67,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.getElementById("reportbutton").style.opacity = '100%';
         document.getElementById("reportbutton").style.pointerEvents = 'all';
-        document.getElementById("rlink").style.pointerEvents = 'all';
+        document.getElementById("reportbutton").style.pointerEvents = 'all';
 
+        document.getElementById('reportbutton').addEventListener("click", () =>{
+            window.location.href = '/reportpage';
+       
+        });
 
         
     });
-
+    
     document.getElementById('numberinput').addEventListener('input', function(e) {
-        this.value = this.value.replace(/[^0-9.]/g, ''); // only allow digits and decimal
+        this.value = this.value.replace(/[^0-9.]/g, ''); 
     });
 
+  
 
 });

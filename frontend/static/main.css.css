@@ -7,7 +7,7 @@ body {
     overflow-x: hidden;
     background-size: cover;
     background-position: center;
-    background-color: black;
+    background-color: white;
 }
 
 #firstsection{
@@ -234,39 +234,52 @@ nav li{
 }
 
 .text{
-   color: rgb(250, 252, 250);
-   text-shadow:  2px 2px 0px black;
+   color: black;
    font-family: 'Lato'; 
    border-radius: 8px;
-   border: 1px solid black;
-   background-color: rgba(25, 225, 7, 0.5);
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
    padding: 5px;
-   margin: 10px;
+   margin: 0px;
    width: 70%;
+   font-size: 20px;
+
+}
+.textt{
+   color: black;
+   font-family: 'Lato'; 
+   border-radius: 8px;
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+   padding: 5px;
+   margin: 0px;
+   width: 100%;
+   font-size: 50px;
+   font-weight: 800;
+   display: flex;
+   justify-content: center;
+
+   border-bottom: 2px solid rgba(25, 225, 7, 0.5);
+
 
 }
 
 .textsh{
-   color: rgb(250, 252, 250);
-   text-shadow:  2px 2px 0px black;
-   font-family: 'Lato';  
+   color: white;
+   text-shadow:  1px qpx 0px rgba(25, 225, 7, 0.5);
+   font-family: 'Baloo 2', sans-serif;
+   font-size: 25px; 
+   font-weight: 600;
 }
 
-#timeoutput{
-    display: flex;
-    justify-content: center;
-
-}
 
 
 #jobsearch{
 
   position: relative;
   border: 4px solid black;
-  background-color: rgba(25, 225, 7, 0.2);
+  background-color: white;
   border-radius: 100px;
   height:50px;
-  color: white;
+  color: black;
   width: 170px ;
   font-family: 'Arimo', sans-serif;
   font-size: 15px;
@@ -278,11 +291,12 @@ nav li{
 
 #jobsearch:focus{
     cursor: pointer;
-    background-color: black;
+    background-color:grey;
 }
 #jobsearch:hover{
+    box-shadow: 0 0 20px rgba(2, 2, 2, 0.9);
     cursor: pointer;
-    background-color: black;
+    background-color: grey;
 }
 
 @keyframes pulseGlow {
@@ -327,22 +341,38 @@ nav li{
 
 #reportbutton{
     opacity: 0%;
-    border: 2px solid rgba(25, 225, 7, 0.5);  
-    box-shadow: 0 0 20px rgba(25, 225, 7, 0.5);
+    margin-left: 10px;
+    border: 2px solid white;  
+    width: 100%;
     border-radius: 8px;
     border: 1px solid black;
-    background-color: rgba(25, 225, 7, 0.5);
+    background-color: black;
+    box-shadow: rgba(45, 247, 0, 0.9);
     margin-top: 50px;
     pointer-events: none;
+    animation: backgroundglow 1s  ease-out infinite;
+    
     
 }
-#rlink{
-    pointer-events: none;
-}
+
 #reportbutton:hover{
 
-    box-shadow: 0 0 12px black;
+    border: 2px solid black;
+    box-shadow: 0 0 12px rgb(0, 0, 0);
+    animation: none;
     cursor: pointer;
+    
+
+}
+@keyframes backgroundglow {
+
+
+  0% { box-shadow: 0 0 10px rgba(0, 0, 0);border: 2px solid white;}
+
+  50% { box-shadow: 0 0 30px rgba(45, 247, 0, 0.9); border: 2px solid white;}
+  100% { box-shadow: 0 0 10px rgba(0, 0, 0); border: 2px solid white;}
+
+
 
 }
 .button{
@@ -363,7 +393,6 @@ nav li{
 .licla{
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin :10px
 }
 
@@ -383,18 +412,15 @@ nav li{
     width: 150px;
 
 }
-#whi{
 
-    color: white;
-}
 #numberinput {
     width: 132px;
     margin: 2px;
     padding: 12px 18px;
     border-radius: 100px;
     border: 4px solid black;
-    background-color: rgba(25, 225, 7, 0.2);
-    color: white;                 
+    background-color: rgb(255, 255, 255);
+    color: black;                 
     font-family: 'Arimo', sans-serif;
     font-size: 15px;
     text-align: center;
@@ -402,8 +428,16 @@ nav li{
 }
 
 #numberinput::placeholder{
-    color: white;
+    color: black;
 }
+
+#numberinput:hover{
+    cursor: pointer;
+    background-color: grey;
+    box-shadow: 0 0 20px rgba(2, 2, 2, 0.9);
+   
+}
+
 #imge{
     position: absolute;
     z-index: -1;
@@ -428,12 +462,7 @@ nav li{
     100%{ top: -100px;left:-128px;height: 400px;width: 500px;}
     
 }
-#numberinput:hover{
-    cursor: pointer;
-    background-color: black;
-   
 
-}
 #insertimage{
     display: flex;
     justify-content: center;
@@ -453,8 +482,17 @@ footer {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: white;
-  color: black;
+  background: linear-gradient(
+        to top,
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,0.95) 40%,
+        rgba(0,0,0,0.85) 60%,
+        rgba(0,0,0,0.6) 75%,
+        rgba(0,0,0,0.3) 90%,
+        rgba(0,0,0,0) 100%
+    );
+
+  color: white;
   margin-top: 2rem;
   margin: 0px;
   height: 100px;

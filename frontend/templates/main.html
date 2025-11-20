@@ -89,7 +89,8 @@
                         </div>  
                         
                         <div id = "submitfield" class = "step2">
-                            <button id = "buttonlabel" type="submit" class = "submit"><h2 id= "sub" class = "steponenobg">Get Price</h2>
+                            <button id = "buttonlabel" type="submit" class = "submit" onclick = "document.getElementById('c').scrollIntoView({ behavior: 'smooth' });">
+                                <h2 id= "sub" class = "steponenobg">Get Price</h2>
                             </button>
                             
                         </div>
@@ -106,18 +107,21 @@
             <ul class = "displaystats">
                 <li class = "licla"> 
                     <img class= "picss" src="../static/site images/price.jpg" alt="hi">
-                    <h1 class="text" id  ="priceoutput">$$$</h1>
+                    <h1 class = "text"> Price for Customers</h1>
+                    <h1 class="textt" id  ="priceoutput">$$$</h1>
                 </li>
 
                 <li class = "licla"> 
                     <div id = "c"><img class = "picss" src="../static/site images/time.avif" alt=""></div>
-                    <h1 class="text" id = "timeoutput">00:00</h1>
-                        <a id = "rlink" href="/reportpage"><button id = "reportbutton" ><h3 class="textsh">Full Report </h3></button></a>
+                    <h1 class = "text"> Completion Time, Hours</h1>
+                    <h1 class="textt" id = "timeoutput">00:00</h1>
+                    <button id = "reportbutton" ><h3 class="textsh"> View Full Report </h3></button>
                 </li>
                     
                 <li class = "licla"> 
                     <img class = "picss" src="../static/site images/mats.jpg" alt="hi">
-                    <h1 class="text" id = "costoutput">$$$</h1>
+                    <h1 class = "text">Cost to Complete</h1>
+                    <h1 class="textt" id = "costoutput">$$$</h1>
                 </li>
             </ul>
         </div>    
