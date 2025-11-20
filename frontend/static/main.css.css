@@ -7,16 +7,20 @@ body {
     overflow-x: hidden;
     background-size: cover;
     background-position: center;
-
+    background-color: black;
 }
 
 #firstsection{
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url("site images/bg.png");
-    height: 100vh;
+    background-image: url("site images/registerpageimage.jpeg");
+    background-position: center -50px;
+    height: 700px;
+    
     
 }
+
+
 
 
 .notnav{
@@ -24,20 +28,37 @@ body {
     display: flex;
     justify-content: left;
     align-items: center;
+    
 
 }
 
 #estimateform{
+    
     display: flex;
+    
     align-items: center;
     padding: 2px;
     margin: 10px;
     width: 100%;
     
+    
 }
 
+nav{
+    height: 100px;
+    background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.95) 40%,
+    rgba(0,0,0,0.85) 60%,
+    rgba(0,0,0,0.6) 75%,
+    rgba(0,0,0,0.3) 90%,
+    rgba(0,0,0,0) 100%
+);
 
+}
 .nav{
+    
     
     display: flex;
     padding-left: 10px;
@@ -47,7 +68,7 @@ body {
 }
 nav ul{
     
-    align-items: center;
+    
     width: 100%;
     justify-content: space-between;
     padding:0px;
@@ -58,33 +79,31 @@ nav li{
 }
 
 .nav-center{
+    z-index: 1;
+    display: inline-block;
+    position: relative;
+   
 
-    display: flex;
-    align-items: center;
-
-}
-#logo{
-
-    height: 20px;
+    
 
 }
 
 
 .main{
     
-    
     margin:  10px;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("site images/input\ image.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    border: 4px solid black;
-    width: px;
+    border: 4px dashed black;
     border-radius: 100px;
+    background-color:rgba(25, 225, 7, 0.2);
+    width: px;
+
 }
 
 
@@ -99,6 +118,7 @@ nav li{
     padding : 5px;
     display: flex;
     align-items: center;
+    flex-direction: column;
     width :inherit;
     height: 50px;
     list-style: none;
@@ -112,7 +132,8 @@ nav li{
     justify-content: center;
     align-items: center;
     width: inherit;
-    border-radius: 100px;
+    margin-top: 10px;
+    
 
 }
 
@@ -123,48 +144,57 @@ nav li{
     margin: 20px;
 }
 
-#hamburg{
-    height: 50px;
-    color: red;
+#lef{
+    height:45px;
+    margin-left: 188px;
+    margin-top: -5px;
+    background-color: transparent;
 }
 
 #contractor{
     font-family: 'Baloo 2', sans-serif;
     font-weight: 800;
+    position: absolute;
+    top: -25px;
+    left:20px;
+    color: #F0F1F1;
+    font-size: 30px;
+    text-shadow: 1px 1px #6CA173
 
-    color: rgb(44, 71, 40);
 }
 
 #cloudlabel{
 
-    height:10px;
+    height:20px;
+    width: 200px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    color: black;
+    color: rgb(0, 0, 0,.8);
     background-color: white;
-    border: 2px solid grey;
     padding: 10px;
-    border-radius: 10px;
-    margin-left: 100px;
-    margin-right: 100px;
-
+    border-radius: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: "Roboto", sans-serif;
 }
 
 
 #cloudlabel:hover{
+
     box-shadow: 0 0 20px rgba(2, 2, 2, 0.9);
-    border: 2px solid white;
     cursor: pointer;
     background-color: grey;
 
 }
 
 #cloudlogo{
-    padding-left: 2px;
+    padding-right: 15px;
 }
 #person{
-    color: rgb(44, 71, 40);
+    
+    color: rgb(255, 255, 255);
     height:50px;
     width: 50px;
 }
@@ -228,23 +258,31 @@ nav li{
 
 }
 
+
 #jobsearch{
 
-  padding: 10px 15px;
-  border-radius: 10px;
-  border: 2px solid white;
-  background-color: black;
+  position: relative;
+  border: 4px solid black;
+  background-color: rgba(25, 225, 7, 0.2);
+  border-radius: 100px;
+  height:50px;
   color: white;
+  width: 170px ;
   font-family: 'Arimo', sans-serif;
-  font-size: 14px;
-  margin: 10px;
+  font-size: 15px;
+  padding-left: 15px;
+  margin: 5px;
   
 
 }
 
+#jobsearch:focus{
+    cursor: pointer;
+    background-color: black;
+}
 #jobsearch:hover{
     cursor: pointer;
-    background-color: rgba(25, 225, 7, 0.5);;
+    background-color: black;
 }
 
 @keyframes pulseGlow {
@@ -261,23 +299,26 @@ nav li{
     justify-content: center;
     width: 100%;
     padding: 1px;
-    border-radius: 10px;
-    background-color: rgba(25, 225, 7, 0.5);
+    background-color: black;
     border: 2px solid rgba(25, 225, 7, 0.5); 
-    box-shadow: 0 0 20px rgba(25, 225, 7, 0.5);
-    border-radius: 8px;
     border: 1px solid black;
 
 }
 
 #words{
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-weight: 700;
-    font-size: 48px;
-    margin-top: 130px;
-    margin-left: 100px;
-    color: black;
+    font-weight: 650;
+    font-size: 40px;
+    margin-top: 120px;
+    margin-left: 40px;
+    margin-bottom: 0px;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 3px black;
 
+
+}
+#pen{
+    color: black;
 }
 #buttonlabel:hover{
     box-shadow: 0 0 12px black;
@@ -317,20 +358,19 @@ nav li{
 .displaystats{
     display: flex;
     padding-left: 0px;
-    width: 80%;
-    list-style: none;justify-content: space-between;
-    
+    list-style: none;
 }
 .licla{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin :10px
 }
 
 
-#moneypic{
-    height: 100px;
-    width: 150px;
+.picss{
+    height: 200px;
+    width: 350px;
 }
 #hourglasspic{
     height: 100px;
@@ -347,28 +387,51 @@ nav li{
 
     color: white;
 }
-#numberinput{
-    
-    width:100px;
-    padding: 12px 18px;              
-    border-radius: 10px;             
-    border: 2px solid white;           
-    background-color: black;         
-    color: white;                     
+#numberinput {
+    width: 132px;
+    margin: 2px;
+    padding: 12px 18px;
+    border-radius: 100px;
+    border: 4px solid black;
+    background-color: rgba(25, 225, 7, 0.2);
+    color: white;                 
     font-family: 'Arimo', sans-serif;
-    font-size: 14px;
-    width: 120px;                    
-    text-align: center;    
-
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.2;  
 }
+
 #numberinput::placeholder{
     color: white;
-
+}
+#imge{
+    position: absolute;
+    z-index: -1;
+    top: -100px;
+    left: -128px;
+    height: 400px;
+    width: 500px;
+    margin: 0;
+    animation: picture .5s ease-out infinite;
+    display: none;
+    
+    
+    
 }
 
+@keyframes picture {
+
+    0%{ top: -100px;left:-128px;height: 400px;width: 500px;}
+
+    50%{ top: -109px;left:-140px;height: 425px;width: 525px;}
+
+    100%{ top: -100px;left:-128px;height: 400px;width: 500px;}
+    
+}
 #numberinput:hover{
     cursor: pointer;
-    background-color: rgba(25, 225, 7, 0.5);;
+    background-color: black;
+   
 
 }
 #insertimage{
@@ -376,9 +439,27 @@ nav li{
     justify-content: center;
 }
 
+#log{
+
+    height:40px;
+
+}
+
 #sub{
     background-color: none;
 }
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: white;
+  color: black;
+  margin-top: 2rem;
+  margin: 0px;
+  height: 100px;
+}
+
 html,body{
     
     padding: 0px;

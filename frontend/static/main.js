@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
         center.style.backgroundSize = "cover";
         center.style.backgroundPosition = "center";
 
+        document.getElementById("cloudlabel").style.backgroundColor = "transparent";
+        document.getElementById("cloudlabel").style.opacity = 0;
+        document.getElementById("cloudlogo").style.backgroundColor = "transparent";
 
     });
 
@@ -68,6 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         
+    });
+
+    document.getElementById('numberinput').addEventListener('input', function(e) {
+        this.value = this.value.replace(/[^0-9.]/g, ''); // only allow digits and decimal
     });
 
 

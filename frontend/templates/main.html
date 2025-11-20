@@ -22,8 +22,14 @@
                 
                 <ul class ="nav">
                     
-                    <li class="nav-left"><a href="Contractor Coding/reportpage.html"> <img id = "hamburg" src="site images\hamburg.jpg" alt=""></a></li>
-                    <li class = "nav-center"><h1 id = "contractor">Contractor</h1> </li>
+                
+                    <li class = "nav-center"> 
+                        <img id = "imge" src="../static/site images/Contractor.png" alt="">
+                        <h3 id = "contractor"> Contractor </h3>
+                        <img id = "lef" src="../static/site images/pricetag.png" alt="">
+                        
+                       
+                    </li>
                     
                     <li class = "nav-right">   
                         <a href ="/registerpage.html">
@@ -34,8 +40,8 @@
                 </ul>
 
             </nav>
-        
-            <h1 id = "words">Get your free quote now.</h1>
+            
+            <h1 id = "words">Get free landscaping quotes now.</h1>
             
             <section class = "notnav">
 
@@ -43,20 +49,24 @@
                     
                     <form id = "estimateform" >
                         
-                        <div id = "main" class = "main">
-                            <div id = "maincenter" class = "maincenter">
-                                <input name = "fileinput" id = "file" type="file" accept="image/*" style = "display: none;">
-                                <label id = "cloudlabel" for="file"><i id = "cloudlogo" data-lucide="cloud-upload"></i></label>  
-                            </div>
+
+                        <div>
+
+                            <input name = "fileinput" id = "file" type="file" accept="image/*" style = "display: none;">
+                            <label for = "file" id = "main" class = "main">
+                                <div id = "maincenter" class = "maincenter">
+                                    <div id = "cloudlabel" ><i id = "cloudlogo" data-lucide="cloud-upload"></i>Upload a picture</div>  
+                                </div>
+                            </label>
+                            
                         </div>
-                        
                         
                         <div class= "step2">
                             <ul class = "step2">
                             
-                                <li> 
+                                <li>    
                                     <select name="jobsearch" id="jobsearch">
-                                        <option value="" selected disabled><h1>Job Type</h1></option>
+                                        <option value="" selected disabled><h1>Select Job Type</h1></option>
                                         <option value="Lawn Mowing">Lawn Mowing</option>
                                         <option value="Mulch">Mulch</option>
                                         <option value="Seeding">Seeding</option>
@@ -68,9 +78,10 @@
                                         <option value="Weed Pulling"> Weed Pulling</option>
                                         <option value="Leaf Removal">Leaf Removal</option>
                                     </select>
+                                    
                                 </li>
                                 <li>
-                                    <input step ="any" name  = "numberinput" class ="jobsearch" type="number" id = "numberinput" placeholder="Job Time (hrs)">
+                                   <input step="any" id = "numberinput" name="numberinput" type="text" placeholder="Number of Hours">
                                 </li>
                                 
                                 
@@ -78,7 +89,7 @@
                         </div>  
                         
                         <div id = "submitfield" class = "step2">
-                            <button id = "buttonlabel" type="submit" class = "submit"><h2 id= "sub" class = "steponenobg">Estimate</h2>
+                            <button id = "buttonlabel" type="submit" class = "submit"><h2 id= "sub" class = "steponenobg">Get Price</h2>
                             </button>
                             
                         </div>
@@ -94,25 +105,25 @@
                 
             <ul class = "displaystats">
                 <li class = "licla"> 
+                    <img class= "picss" src="../static/site images/price.jpg" alt="hi">
                     <h1 class="text" id  ="priceoutput">$$$</h1>
-                    <img id = "moneypic" src="../static/site images/moneypic.png" alt="hi">
                 </li>
 
                 <li class = "licla"> 
+                    <div id = "c"><img class = "picss" src="../static/site images/time.avif" alt=""></div>
                     <h1 class="text" id = "timeoutput">00:00</h1>
-                        <div id = "c"><img id = "hourglasspic" src="../static/site images/hourglass.png" alt=""></div>
                         <a id = "rlink" href="/reportpage"><button id = "reportbutton" ><h3 class="textsh">Full Report </h3></button></a>
                 </li>
                     
                 <li class = "licla"> 
+                    <img class = "picss" src="../static/site images/mats.jpg" alt="hi">
                     <h1 class="text" id = "costoutput">$$$</h1>
-                    <img id = "woodpic" src="../static/site images/wood.png" alt="hi">
                 </li>
             </ul>
         </div>    
             
     
-        <footer style="height: 200px;"></footer>
+        <footer > <p>&copy; 2025 Contractor Dashboard</p></footer>
         
         <script>
             lucide.createIcons();
