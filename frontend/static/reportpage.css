@@ -1,112 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap');
 
-body {
-  font-family: 'Arimo', sans-serif;
-  background-color: #f5f6fa;
-  margin: 0;
-  padding: 0;
-  background-size: cover;
 
-}
-
-header {
-  font-family: 'Lato';
- 
-  width: 100%;
-  color: black;
-  text-align: center;
-  padding: 1.5rem 0;
-  margin: 0px;
-  
+html{
+  overflow-x: hidden;
+  background: url("../static/site images/input\ image.jpg")
   
 }
 
-.t{
-  font-family: 'Lato';
 
+.nav{
+  display: flex;
+  background-color: rgb(0, 0, 0);
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  margin: -10px;
+  height: 65px;
+  position: sticky;
+  z-index: 999;
+  top: 0;
+  
 }
 
+li{
+  color:white;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+  
+}
 #person{
-    color: black;
-    height:50px;
-    width: 50px;
-    margin-right: 20px;
-    
+  
+  color: white;
+  margin-right: 40px;
+  height:30px;
+  width: 30px;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 100px;
+
 }
 
 #person:hover{
-
-  border-bottom: 5px solid red;
+  background-color: rgb(32, 32, 32);
 }
 
-.nav{
-  
-  padding: none;
+
+#main{
+  margin: 25px 20px;
   display: flex;
+  width: inherit;
+
+}
+
+.report-container{
+  background-color: rgb(255, 255, 255, .9);
+  border: 2px solid black;
+  border-radius: 40px;
+  height: 80vh;
+  margin: 20px 20px;
+  width: 100%;
+  padding: 10px;
+
+}
+
+#imagedatetype{
+  display: flex;
+  flex-direction: column;
+  
+}
+#top{
   justify-content: space-between;
   align-items: center;
-  list-style: none;
-}
-.nav li{
-  margin-left: 0px;
-  margin-right: 20px;
-  padding: 0px;
+  display: flex;
+  padding: 0px 3px;
+  
+  margin: 0px 5px;
+  border-radius: 5px;
 }
 
+#datelogo{
+  display: flex;
+  align-items: center;
+}
 
-.report-container {
-  max-width: 900px;
-  margin: 2rem auto;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  padding: 2rem;
-  height: 100vh;
+#hiddenCalendar{
+  position: absolute;
+  top:30px;
+}
+#calendar{
+  
+  height: 30px;
+  width: 30px;
+  margin: 5px;
+  padding: 12px 20px ;
+  border-radius: 100px;
+}
+
+#calendar:hover{
+  cursor: pointer;
+  background-color: rgb(0, 0, 0,.2);
+}
+
+.job-type{
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  color: rgb(0, 0, 0);
+  text-shadow: 1px 1px rgb(185, 213, 182);
+  padding: 10px;
+
+}
+#job-type{
+  background-color: rgb(30, 133, 7,.4);
+  border-radius: 50px;
+}
+
+#imagesection{
+  height: 90%;
+  background-image: url("site images/input image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: black;
+  background-position: center;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.report-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  
+}
+#reporttop{
+  margin-top: 60px;
+}
+.description{
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: .5px solid black;
   
 }
 
+.descriptlogo{
 
-.info-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  border-bottom: 2px solid #e0e0e0;
-  padding-bottom: 50px;
-  margin-bottom: 2rem;
-}
-
-.info-section h2 {
-  width: 100%;
-  color: #0c0d0d;
-  margin-bottom: 0.75rem;
-}
-
-.info-section p {
-  width: 48%;
-  margin: 0.5rem 0;
-  font-size: 20px;
-  color: #333;
-}
-
-
-
-.image-section {
-  background-image: url("site images/input image.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  text-align: center;
-  height: 60%;
+  
+  height: 50px; 
+  width: 50px;
   padding: 10px;
   
 }
 
+.t{
 
-footer {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  background-color: rgb(30, 133, 7,.4);
+  border-radius: 500px;
+  width: 100%;
   text-align: center;
-  padding: 1rem;
-  background-color: #090a0a;
+}
+
+#button{
+  display: none;
+  pointer-events: none;
+}
+#buttonlabel{
+  margin-left: 66px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#buttontext{
+  margin-top: 30px;
+  line-height: 85px;
+  background-color: white;
+  border-radius: 10px;
+  height: 80px;
+  width: 270px;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  border: 2px solid black;
+  animation: glow 1s infinite;
+}
+@keyframes glow{
+  0%{box-shadow: 0px 0px 10px black;}
+  50%{box-shadow: 0px 0px 40px rgb(0, 0, 0);}
+  100%{box-shadow:  0px 0px 10px black;}
+}
+#buttontext:hover{
+  animation:none;
+  background-color: grey;
+}
+
+#popup{
+
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  z-index: -999;
+  margin-bottom: 100px;
+  top: 10px;
+  height: 100%;
+  width: 100%;
+
+}
+#signin{
+  opacity: 0;
+  border-radius: 100px;
+  position: relative;
+  left: 240px;
+  top: 100px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(0, 0, 0);
+  width:50%;
+  height: 50%;
+  border: 2px solid white;
+  
+}
+.please{
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: white;
-  margin-top: 2rem;
-  margin: 0px;
+}
+
+#normal{
+  display:none;
+  pointer-events: none;
+}
+
+#nblabel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white; 
+  height:60px;
+  width: 120px;
+  border-radius: 25px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: black;
+  border: 2px solid rgb(255, 255, 255);
+  box-shadow: 0px 0px 3px white;
+  pointer-events: none;
+
+}
+#nblabel:hover{
+  border: 2px solid black;
+  box-shadow: 0px  0px 0px rgb(255, 255, 255);
+  background-color: grey; 
+  cursor: pointer;
+}
+
+footer{
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 100vw;
+  margin-top: 150px;
+  margin-bottom: -8px;
+  margin-left: -8px;
+ 
 }

@@ -6,4 +6,5 @@ mysql-connector-python
 flask
 python-dotenv
 boto3
+argon2-cffi
 

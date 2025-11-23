@@ -17,8 +17,13 @@ from dotenv import load_dotenv
 import boto3
 import os
 import uuid
+from argon2 import PasswordHasher
 
 load_dotenv()
+
+ph = PasswordHasher()
+hashed = ph.hash("mypassword123")
+ph.verify(hashed, "mypassword123")
 
 
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
@@ -73,6 +78,18 @@ def getreportpage():
 def getinfo():
     return jsonify(session["result"])
 
+@app.route("/getsessioninfo")
+def getsessioninfo():
+    return jsonify(session.get("username"))
+
+@app.route("/clearsession")
+def clearsession():
+    session.clear()
+    return render_template("main.html")
+
+@app.route("/viewjobs")
+def viewjobs():
+    return render_template("viewjobs.html")
 
 
 
@@ -216,26 +233,139 @@ class ResNetWithJobType(nn.Module):
         out = self.base_model.fc(x)
         return out
 
-@app.route('/checkusername')
+@app.route('/usernameexists', methods = ["POST"])
 def usernameexists():
 
     db = getdb()
 
     cursor = db.cursor(dictionary= True)
 
-    tempuser = request.form["username"]
+    tempuse = request.form["username"]
+    tempuser = tempuse.strip()
 
-    querey = "select * from login where username = %s"
+    querey = "select * from users where username = %s"
 
     cursor.execute(querey, (tempuser,))
 
     result = cursor.fetchall()
-
+    print(result, " hello")
     if not result:
-        return False
+        print("false")
+        data = {
+            "userexist": False,
+        }
     else:
-        return True 
+        print("true")
+        data = {
+            "userexist" : True,
+        }
 
+    db.close()
+    return jsonify(data)
+
+ 
+@app.route('/registeruser', methods= ["POST"])
+def registeruser():
+    db = getdb()
+    cursor = db.cursor(dictionary= True)
+    
+    ph = PasswordHasher()
+    hashedpw = ph.hash(request.form["password"].strip())
+
+    username = request.form["username"].strip()
+    email = request.form["email"].strip()
+
+    querey = "insert into users (username, password, email) values (%s, %s, %s)"
+
+    cursor.execute(querey, (username, hashedpw,email))
+    db.commit()
+
+    db.close()
+    cursor.close()
+
+    userdata ={
+        "username":username,
+    }
+    session["username"]  = userdata
+
+    return None
+
+
+@app.route('/loginuser', methods=["POST"])
+def loginuser():
+
+    db = getdb()
+    cursor = db.cursor()
+
+    username = request.form["username"].strip()  
+    password = request.form["password"].strip()
+
+    querey = "select * from users where username = %s"
+
+    cursor.execute(querey, (username,))
+    results = cursor.fetchone()
+    
+
+    if not results:
+        return jsonify({"correct": False})
+    else:
+        ph = PasswordHasher()
+        try:
+            ph.verify(results[1].strip(), password)
+
+            usernamedata = {
+                "username": username,
+            }
+            session["username"] = usernamedata
+            return jsonify({"correct": True})
+        except Exception as e:
+            return jsonify({"correct": False})
+        
+
+@app.route('/savejob', methods = ["POST"])
+def savejob():
+    db = getdb()
+
+
+    cursor = db.cursor()
+    querey = "insert into alljobs(filepath, date, price, time,cost,username, jobtype, linearprice, linearcost, inputtime) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" 
+    cjd = request.get_json()
+    print("Received JSON:", cjd)
+
+    lod = session["linearoutput"] 
+
+    ltime = lod["time"]
+    lprice = lod["price"]
+    lcost = lod["cost"]
+     
+
+    cursor.execute(querey,(cjd["file"],cjd["date"],cjd["price"],cjd["time"],cjd["cost"],cjd["username"],cjd["type"],lprice, lcost,ltime))
+    
+    db.commit()
+    cursor.close()
+    db.close()
+
+    return jsonify({"Status" : "success"})
+
+
+@app.route('/getusersjobs', methods =["POST"])
+def getusersjobs():
+
+    db = getdb()  
+    cursor = db.cursor(dictionary=True)
+
+    querey = "select * from alljobs where username = %s"
+
+    user = session["username"]["username"]
+
+    cursor.execute(querey, (user,))
+    results = cursor.fetchall()
+
+    print(results)
+
+    cursor.close()
+    db.close()
+    return jsonify(results)
 
 
 if __name__ == "__main__":

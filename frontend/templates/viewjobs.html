@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+
+    <head>
+        <link rel="stylesheet" href="../static/viewjobs.css">
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <title>Contractor/jobreports</title>
+        <link rel = "icon" href = "static\site images\logo.png">
+    </head>
+
+    <body>
+        <ul class = "nav">
+            <li><h1> <em>My Jobs</em></h1></li>
+            <li>
+                <a href ="/"><i id = "person" data-lucide ="home"></i></a>
+            </li>
+        </ul>    
+
+
+        <div id = "jobdisplay">
+
+            <div class = "jobsitems">
+
+                <div id = "imgop" class = "img"></div> 
+                
+                <div class = "info" id = "picjob">
+                    <h4 class = "typeoutput" class = "label">Foliage removal</h4>
+                    <h4 class = "dateoutput">11/22/2025</h4>
+                </div>
+                
+                <div id = "infop" class = "info"> 
+                    <h1 class = "text" style="background-color: rgb(143, 143, 143,.1);"><em>AI</em></h1>
+                    <h1 style="background-color:rgb(172, 94, 0,.1);" class = "text">Hourly</h1>
+                </div>
+                
+                
+                <div class = "info">
+
+                    <h3 id = "priceoutputai"></h4>
+                    <h3 class= "price">Price</h4>
+                    <h3 id = "priceoutputhour"></h4>
+
+                </div>
+
+                <div class = "info">
+
+                    <h3 class = "timeoutputai"></h4>
+                    <h3 class= "price">Time</h4>
+                    <h3 class="timeoutputhour"></h4>
+
+                </div>
+
+                <div class = "info">
+
+                    <h3 class = "costoutputai"></h4>
+                    <h3 class= "price">Cost</h4>
+                    <h3 class ="costoutputhour"></h4>
+
+                </div>            
+        
+        </div>
+
+    </body>
+
+
+    <footer>
+        <script>
+            lucide.createIcons();
+        </script>
+    </footer>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", async(event) =>{
+
+            const data = await fetch('/getusersjobs',{
+                method: "POST",
+            });
+
+            const dataj = await data.json();
+
+            console.log("gello")
+
+            const jobdisplay = document.getElementById("jobdisplay");
+            
+            dataj.forEach(job =>{
+
+                console.log(job.inputtime);
+                let timedisplay = "";
+                const decimal = job.inputtime * 60;
+                console.log(decimal);
+                const left = Math.floor(decimal/60);
+                console.log(left);
+                const right = Math.round(decimal % 60) ;
+                console.log(right)
+
+                if(left === 0) timedisplay+= "0";
+                
+                timedisplay += left.toString();  
+                timedisplay+= ":";
+                console.log(timedisplay);
+                console.log(right);
+
+                if(right>9)timedisplay += String(right);
+                else{
+                    timedisplay+="0";
+                    timedisplay+= String(right);
+                }
+                
+
+                const row = document.createElement("div");
+                row.classList.add("jobsitems");
+
+                const imgdiv = document.createElement("div");
+                imgdiv.classList.add("img")
+                imgdiv.style.backgroundImage = `url(${job.filepath})`;
+
+                row.appendChild(imgdiv);
+
+                const typeDiv = document.createElement("div");
+                typeDiv.style.borderRight = `.5px solid black`;
+                typeDiv.style.padding = `5px`;
+                typeDiv.classList.add("info");
+                typeDiv.innerHTML = `
+                <h3>${job.jobtype}</h3>
+                <h3>${job.date}</h3>
+                `;
+                row.appendChild(typeDiv);
+                
+                
+                
+                const typeModeDiv = document.createElement("div");
+                typeModeDiv.classList.add("info");
+                typeModeDiv.innerHTML = `
+                <h1 class="text" style="background-color: rgb(143, 143, 143,.1);"><em>AI</em></h1>
+                <h1 class="text" style="background-color:rgb(172, 94, 0,.1);">Hourly</h1>
+                `;
+                row.appendChild(typeModeDiv);
+                
+                
+                const priceDiv = document.createElement("div");
+                priceDiv.classList.add("info");
+                priceDiv.innerHTML = `
+                <h3>${job.price}</h3>
+                <h3>${job.linearprice}</h3>
+                `;
+                row.appendChild(priceDiv);
+                
+                
+                const timeDiv = document.createElement("div");
+                timeDiv.classList.add("info");
+                timeDiv.innerHTML = `
+                <h3>${job.time}</h3>
+                <h3>${timedisplay}</h3>
+                `;
+                row.appendChild(timeDiv);
+
+
+                const costDiv = document.createElement("div");
+                costDiv.classList.add("info");
+                costDiv.innerHTML = `
+                <h3 class="costoutputai">${job.cost}</h3>
+                <h3 class="costoutputhour">${job.linearcost}</h3>
+                `;
+                row.appendChild(costDiv);
+
+
+
+                jobdisplay.appendChild(row);
+                
+
+            });
+            
+            
+
+        });
+
+
+    </script>
+
+</html>

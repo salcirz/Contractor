@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contractor Support - Account</title>
   <link rel="stylesheet" href="../static/registerpage.css">
-  <script src="registerpage.js" defer></script>
+  <link rel = "icon" href = "static\site images\logo.png">
+
 </head>
 
 <body>
@@ -18,13 +19,14 @@
       <h2>Register - <a href="/"> Home </a>
       </h2>
 
-      <label for="reg-email">Email</label>
+      <label id = "emailid" for="reg-email">Email</label>
       <input name = "email" type="email" id="reg-email" placeholder="Enter your email" required>
 
-      <label for="reg-username">Username</label>
+      <label id ="usernameid" for="reg-username">Username</label>
       <input name = "username" type="text" id="reg-username" placeholder="Create a username" required>
+      
 
-      <label for="reg-password">Password</label>
+      <label id = "passwordid" for="reg-password">Password</label>
       <input name = "password" type="password" id="reg-password" placeholder="Create a password" required>
 
       <button type="submit" class="btn">Register</button>
@@ -34,9 +36,10 @@
       </p>
 
     </form>
-
+    
   </div>
 
+  <script src = "static/registerpage.js"></script>
 </body>
 
 </html>

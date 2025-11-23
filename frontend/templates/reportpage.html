@@ -4,55 +4,86 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Job Report</title>
   <link rel = "icon" href = "static\site images\logo.png">
   <link rel="stylesheet" href="../static/reportpage.css">
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/countup.js@2.6.2/dist/countUp.umd.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 </head>
+
 <body>
-
-
-
-  <header>
     <ul class = "nav">
-
+      <li><h1> <em>Job Report</em></h1></li>
       <li>
-        <a href ="/">    
-          <i id = "person" data-lucide ="home"></i>
-        </a>
+        <a href ="/"><i id = "person" data-lucide ="home"></i></a>
+        <a href ="/registerpage.html"><i id = "person" data-lucide ="user"></i></a>
       </li>
-
-      <li><h1>Job Report</h1></li>
-      
-      <li>
-        <a href ="/registerpage.html">    
-          <i id = "person" data-lucide ="user"></i>
-        </a>
-      </li>
-
     </ul>
-  </header>
 
-  <main class="report-container">
-    
-    <div class="info-section">
+
+    <div id = "main">
+
+      <section id = "imagedatetype" class="report-container">
+        
+        <div id = "top">
+
+          <h2 class = "job-type" id="job-type">Foliage Removal</h2>
+
+          <div id = datelogo>
+            <input id="hiddenCalendar" type="text" style="display:none">
+            <i id = "calendar" data-lucide="calendar"></i>
+            <h2 class = "job-type" id="job-date">Date</h2>
+          </div>
+
+        </div>
+        
+        <div id = "imagesection" >
+  
+        </div>
+        
+      </section>
       
-      <h2 class = "t" id="job-type">Job Type: --</h2>
-      <p class = "t" id="job-price">Price: --</p>
-      <p class = "t" id="job-cost">Cost: --</p>
-      <p class = "t"  id="time">Time: --</p>
-      <p class = "t" id="job-date">Date Assigned: --</p>
+      <div class="report-container">
+
+        <div id = "reporttop" class = "description">
+          <i class = "descriptlogo" data-lucide="timer"></i>
+          <p class = "t"  id="time">Time</p>
+        </div>
+        
+        <div  class = "description">
+          <i class = "descriptlogo" data-lucide="hand-coins"></i>
+          <p class = "t" id="job-price">Price</p>
+        </div>
+        
+        <div class = "description">
+          <i class = "descriptlogo" data-lucide="hammer"></i>
+          <p class = "t" id="job-cost">Cost</p>
+        </div>
+        
+
+        <button id = "button" >save job</button>
+        <div id = buttonlabel>
+          <label for="button" id = "buttontext"> Save Job</label>
+        </div>
+        
+      </div>
+      
     </div>
 
+    <div id = "popup">
 
-    <div id = "imagesection" class="image-section">
+      <div id = "signin">
+        <h1 class = "please"> <em>Please sign in to save jobs</em></h1>
+        <button id = "normal"></button>
+        <label for="normal" id = "nblabel" ><h4>OK</h4></label>
+      </div>
 
-       
     </div>
-  </main>
+      
+      
 
   <footer>
     <p>&copy; 2025 Contractor Dashboard</p>
@@ -65,21 +96,108 @@
 
 <script>
 
+    let datajson = {};
+    
+    let timedisplay = "";
+
     async function loadJobInfo() {
 
-      const response = await fetch("/getinfo", { cache: "no-cache" });
-      const datajson = await response.json();
-
+      const response=  await fetch("/getinfo", { cache: "no-cache"});
+      datajson = await response.json();
+  
       document.getElementById("job-type").textContent = `${datajson.jobtype}`;
-      document.getElementById("job-cost").textContent = `Cost: ${datajson.cost}`;
-      document.getElementById("job-price").textContent = `Price: ${datajson.price}`;
-      document.getElementById("time").textContent = `Time: ${datajson.time}`;
-      document.getElementById("job-date").textContent = `Date Assigned: ${new Date().toLocaleDateString()}`;
+      document.getElementById("job-cost").textContent = `$${datajson.cost}`;
+      document.getElementById("job-price").textContent = `$${datajson.price}`;
+      document.getElementById("job-date").textContent = `${new Date().toLocaleDateString()}`;
       document.getElementById("imagesection").style.backgroundImage = `url(${datajson.file})` ;
+
+      console.log(datajson.time);
+      const decimal = datajson.time * 60;
+      console.log(decimal);
+      const left = Math.floor(decimal/60);
+      console.log(left);
+      const right = Math.round(decimal % 60) ;
+      console.log(right)
+
+      if(left === 0) timedisplay+= "0";
       
+      timedisplay += left.toString();  
+      timedisplay+= ":";
+      console.log(timedisplay);
+      console.log(right);
+
+      if(right>9)timedisplay += String(right);
+      else{
+        timedisplay+="0";
+        timedisplay+= String(right);
+      }
+      document.getElementById("time").textContent = timedisplay;
     }
 
+    const calendar = flatpickr("#hiddenCalendar", {
+      defaultDate: "today",
+      clickOpens: false,
+      
+    });
+
     loadJobInfo();
+
+
+    document.getElementById("calendar").addEventListener("click", () => {
+      calendar.open();
+    });
+
+    document.getElementById("button").addEventListener("click", async(ev) => {
+      
+
+      ev.preventDefault();
+      let sessiondata = await fetch('/getsessioninfo');
+      let sessiondatajson = await sessiondata.json();
+
+      
+      if(sessiondatajson && sessiondatajson.username !== undefined){
+
+        const data ={
+          price: datajson.price,
+          cost: datajson.cost,
+          time: timedisplay,
+          type: datajson.jobtype,
+          date: new Date().toLocaleDateString(),
+          file: datajson.file,
+          username: sessiondatajson.username,
+        };
+        console.log("yes")
+
+        await fetch('/savejob',{
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+
+        console.log("here");
+        window.location.href = "/viewjobs";
+
+      }else{
+        document.getElementById("popup").style.zIndex = 1;
+        document.getElementById("signin").style.opacity = 1;
+        document.getElementById("normal").style.pointerEvents = `all`;
+        document.getElementById("nblabel").style.pointerEvents = `all`;
+        document.getElementById("main").style.opacity = 0;
+        
+      }
+    });
+
+    document.getElementById("normal").addEventListener("click", () =>{
+
+      document.getElementById("popup").style.zIndex = -999;
+      document.getElementById("signin").style.opacity = 0;
+      document.getElementById("normal").style.pointerEvents = `none`;
+      document.getElementById("nblabel").style.pointerEvents = `none`;
+      document.getElementById("main").style.opacity = 1;
+    });
+
+
+
   </script>
 
 </html>

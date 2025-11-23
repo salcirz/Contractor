@@ -55,10 +55,10 @@ nav{
     rgba(0,0,0,0.3) 90%,
     rgba(0,0,0,0) 100%
 );
+   
 
 }
 .nav{
-    
     
     display: flex;
     padding-left: 10px;
@@ -99,10 +99,10 @@ nav li{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    border: 4px dashed black;
     border-radius: 100px;
+    border: 4px dashed black;
     background-color:rgba(25, 225, 7, 0.2);
-    width: px;
+    width: 320px;
 
 }
 
@@ -193,7 +193,7 @@ nav li{
     padding-right: 15px;
 }
 #person{
-    
+    margin-right: 15px;
     color: rgb(255, 255, 255);
     height:50px;
     width: 50px;
@@ -307,7 +307,7 @@ nav li{
 #buttonlabel{
     align-items: center;
     height: 50px;
-    border: 2px solid black;
+    
     margin: 0px;
     display: flex;
     justify-content: center;
@@ -336,13 +336,14 @@ nav li{
 }
 #buttonlabel:hover{
     box-shadow: 0 0 12px black;
+    border:2px solid white;
     cursor: pointer;
 }
 
 #reportbutton{
     opacity: 0%;
     margin-left: 10px;
-    border: 2px solid white;  
+    border: 2px solid blanck;  
     width: 100%;
     border-radius: 8px;
     border: 1px solid black;
@@ -357,7 +358,7 @@ nav li{
 
 #reportbutton:hover{
 
-    border: 2px solid black;
+    border: 2px solid white;
     box-shadow: 0 0 12px rgb(0, 0, 0);
     animation: none;
     cursor: pointer;
@@ -367,10 +368,10 @@ nav li{
 @keyframes backgroundglow {
 
 
-  0% { box-shadow: 0 0 10px rgba(0, 0, 0);border: 2px solid white;}
+  0% { box-shadow: 0 0 10px rgba(0, 0, 0);border: 2px solid black;}
 
-  50% { box-shadow: 0 0 30px rgba(45, 247, 0, 0.9); border: 2px solid white;}
-  100% { box-shadow: 0 0 10px rgba(0, 0, 0); border: 2px solid white;}
+  50% { box-shadow: 0 0 30px rgba(45, 247, 0, 0.9); border: 2px solid black;}
+  100% { box-shadow: 0 0 10px rgba(0, 0, 0); border: 2px solid black;}
 
 
 
@@ -496,6 +497,71 @@ footer {
   margin-top: 2rem;
   margin: 0px;
   height: 100px;
+}
+
+#loginlogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:18px;
+    right: 35px;
+    background-color: rgba(25, 225, 7, 0.5);
+    border-radius: 200px;
+    width: 50px;
+    height:50px;
+    opacity: 0;
+    pointer-events: none;
+    border: 2px solid rgb(21, 175, 4);
+
+}
+#loginlogo:hover{
+    box-shadow: 0 0 20px rgb(21, 175, 4);
+    border: 2px solid blanchedalmond
+}
+#initial{
+    font-size: 30px;
+    font-weight: 800;
+    color:white;
+    text-shadow: 2px 2px #000000 ;
+ 
+
+}
+
+#popup{
+
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 10px;
+    position:fixed;
+    width: 300px;
+    height: 50px;
+    right: -1px;
+    top: 60px;
+    
+   
+}
+.poplink{
+    
+    pointer-events: none;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    margin: 10px;
+    background-color:  rgba(0, 0, 0, 0.5);
+    border: 1px solid black;
+    text-shadow: 1px 1px  black;
+    color: white;
+    padding: 4px;
+    border-radius: 2px;
+    text-decoration: none;
+}
+.poplink:hover{
+    background-color: black;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    transform: translateY(-1px);
+    cursor: pointer;
 }
 
 html,body{
