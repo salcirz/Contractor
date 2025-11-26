@@ -20,7 +20,7 @@
 
         <div id = "jobdisplay">
 
-            <div class = "jobsitems">
+            <div id = "topper" class = "jobsitems">
 
                 <div id = "imgop" class = "img"></div> 
                 
@@ -30,8 +30,8 @@
                 </div>
                 
                 <div id = "infop" class = "info"> 
-                    <h1 class = "text" style="background-color: rgb(143, 143, 143,.1);"><em>AI</em></h1>
-                    <h1 style="background-color:rgb(172, 94, 0,.1);" class = "text">Hourly</h1>
+                    <h1 class = "text" style="background-color: rgb(143, 143, 143,.3);"><em>AI</em></h1>
+                    <h1 style="background-color:rgb(172, 94, 0,.3);" class = "text">Hourly</h1>
                 </div>
                 
                 
@@ -123,8 +123,8 @@
                 typeDiv.style.padding = `5px`;
                 typeDiv.classList.add("info");
                 typeDiv.innerHTML = `
-                <h3>${job.jobtype}</h3>
-                <h3>${job.date}</h3>
+                <h4>${job.jobtype}</h4>
+                <h4>${job.date}</h4>
                 `;
                 row.appendChild(typeDiv);
                 
@@ -133,8 +133,8 @@
                 const typeModeDiv = document.createElement("div");
                 typeModeDiv.classList.add("info");
                 typeModeDiv.innerHTML = `
-                <h1 class="text" style="background-color: rgb(143, 143, 143,.1);"><em>AI</em></h1>
-                <h1 class="text" style="background-color:rgb(172, 94, 0,.1);">Hourly</h1>
+                <h1 class="text" style="background-color: rgb(143, 143, 143,.2);"><em>AI</em></h1>
+                <h1 class="text" style="background-color:rgb(172, 94, 0,.2);">Hourly</h1>
                 `;
                 row.appendChild(typeModeDiv);
                 
@@ -142,8 +142,8 @@
                 const priceDiv = document.createElement("div");
                 priceDiv.classList.add("info");
                 priceDiv.innerHTML = `
-                <h3>${job.price}</h3>
-                <h3>${job.linearprice}</h3>
+                <h3 class ="ai">${job.price}</h3>
+                <h3 class = "hour">${job.linearprice}</h3>
                 `;
                 row.appendChild(priceDiv);
                 
@@ -151,8 +151,8 @@
                 const timeDiv = document.createElement("div");
                 timeDiv.classList.add("info");
                 timeDiv.innerHTML = `
-                <h3>${job.time}</h3>
-                <h3>${timedisplay}</h3>
+                <h3 class ="ai">${job.time}</h3>
+                <h3 class = "hour">${timedisplay}</h3>
                 `;
                 row.appendChild(timeDiv);
 
@@ -160,8 +160,8 @@
                 const costDiv = document.createElement("div");
                 costDiv.classList.add("info");
                 costDiv.innerHTML = `
-                <h3 class="costoutputai">${job.cost}</h3>
-                <h3 class="costoutputhour">${job.linearcost}</h3>
+                <h3 class="ai">${job.cost}</h3>
+                <h3 class="hour">${job.linearcost}</h3>
                 `;
                 row.appendChild(costDiv);
 
@@ -175,6 +175,8 @@
             
 
         });
+
+       
 
 
     </script>

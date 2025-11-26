@@ -2,7 +2,7 @@
 html,body{
     margin: 0;
     padding: 0;
-    background-image: url("../static/site images/websitebackground.jpg") ;
+    background-image: url("../static/site images/websitebackground.jpg");
     background-position: center;
     background-size: contain;
     height: 100vh;
@@ -45,23 +45,46 @@ li{
 
 #jobdisplay{
     margin: 40px 50px; 
-    background-color: rgb(247, 254, 247);
+    background-color: rgb(255, 255, 255);
     height: 450px;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding-top: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
     border: 5px solid black;
     overflow-y: auto;
+    scroll-behavior: smooth;
 }
 
 .jobsitems{
+        
     display: flex;
     width: inherit;
     height: 150px;
     border-bottom: .5px solid black;
     padding: 8px;
-
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.5s forwards; /* run animation */
 }
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+ 
+#topper{
+    height: 40px;
+    position: sticky;
+    top: 0px;
+    background-color: rgb(255, 251, 251);
+    z-index: 100;
+    margin: 0;
+    
+}
+
 
 .img{
     background-image: url("../static/site images/input\ image.jpg");
@@ -92,6 +115,7 @@ li{
     font-family: 'Rajdhani', sans-serif;
     border-radius: 20px;
     padding: 5px 10px;
+    border-bottom: 2px solid black;
     
 }
 
@@ -103,14 +127,38 @@ li{
     background-color: rgb(30, 133, 7,.4);
 }
 
+.ai{
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: rgb(143, 143, 143,.3);
+}
+
+.hour{
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color:rgb(172, 94, 0,.2);
+}
+
 h3{
     margin: 10px;
     font-size: 25px;
     font-weight: 900;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-bottom: 2px solid black;
+
+}
+h4{
+    margin: 10px;
+    font-size: 25px;
+    font-weight: 900;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+
 }
 .price{
-    border-bottom: 1px solid green;
+    border-radius: 20px;
+    padding: 5px;
+    background-color: rgb(30, 133, 7,.2);
 }
 
 #imgop{
