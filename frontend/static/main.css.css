@@ -21,15 +21,13 @@ body {
 }
 
 
-
-
 .notnav{
     width: 100%;
     display: flex;
     justify-content: left;
     align-items: center;
-    
-
+    opacity: 0;
+    animation: fadeUp 1s ease-out 1s forwards;
 }
 
 #estimateform{
@@ -328,8 +326,13 @@ nav li{
     margin-bottom: 0px;
     color: rgb(255, 255, 255);
     text-shadow: 3px 3px black;
+    animation: fadeUp 2s forwards;
 
 
+}
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 #pen{
     color: black;
@@ -517,7 +520,8 @@ footer {
 }
 #loginlogo:hover{
     box-shadow: 0 0 20px rgb(21, 175, 4);
-    border: 2px solid blanchedalmond
+    border: 2px solid blanchedalmond;
+    cursor: pointer;
 }
 #initial{
     font-size: 30px;
