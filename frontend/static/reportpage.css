@@ -62,12 +62,22 @@ li{
   margin: 20px 20px;
   width: 100%;
   padding: 10px;
+  
+}
+#pricingout{
+  opacity: 0;
+  animation: fade 1s ease-out .5s forwards;
+}
 
+@keyframes fade {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 #imagedatetype{
   display: flex;
   flex-direction: column;
+  animation: fade 1s forwards;
   
 }
 #top{

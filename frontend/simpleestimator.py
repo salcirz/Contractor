@@ -157,11 +157,15 @@ def getimageprices():
     checkpoint = torch.load(modelpath, map_location="cpu")
 
     # Recreate model architecture
+
     from torchvision import models
     resnet = models.resnet18(weights=None)
     num_features = resnet.fc.in_features
     resnet.fc = nn.Linear(num_features + 1, 3)  # +1 for job type
+
+
     model = ResNetWithJobType(resnet)
+    
     model.load_state_dict(checkpoint["model_state_dict"])
     model.eval()
 

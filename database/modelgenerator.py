@@ -180,7 +180,7 @@ for job in jobtypeslist:
             optimizer.step()
         print(f"Epoch {epoch+1}/{epochs}, Loss: {loss.item():.4f}")
 
-    # --- 9. Example prediction ---
+    #example
     img_sample = images[0].unsqueeze(0)
     job_sample = jobtypedata[0].unsqueeze(0)
     print(jobtypedata[0])
