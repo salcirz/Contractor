@@ -1,3 +1,5 @@
+#this is used to fill the database with the csv file
+
 import csv
 import mysql.connector
 

@@ -1,6 +1,6 @@
 console.log(1);
 
-
+//javascript file for the main page
 
 document.addEventListener("DOMContentLoaded", async(events) => {  
 

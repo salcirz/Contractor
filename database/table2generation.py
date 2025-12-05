@@ -1,3 +1,6 @@
+
+#this file is used to generate the unit table to make linear estimations
+
 import mysql.connector
 
 

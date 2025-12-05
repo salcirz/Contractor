@@ -2,6 +2,7 @@
 #to run:
 # docker run -it --rm -v "${PWD}:/app" -w /app contractor-dev python database/modelgenerator.py
 
+#this file creates the AI models and saves them to the local folder 
 import os
 import mysql.connector
 import pandas as pd

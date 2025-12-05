@@ -2,8 +2,9 @@
 
 docker run -it --rm -p 5000:5000 -v "${PWD}:/app" -w /app contractor-dev python frontend/simpleestimator.py
 
-
 """
+
+#this file was the application file that runs all the routes and server for the main application final
 
 from flask import Flask,request, render_template, jsonify, send_from_directory, session
 import torch
@@ -165,7 +166,7 @@ def getimageprices():
 
 
     model = ResNetWithJobType(resnet)
-    
+
     model.load_state_dict(checkpoint["model_state_dict"])
     model.eval()
 

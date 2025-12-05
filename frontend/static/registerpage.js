@@ -1,4 +1,4 @@
-
+//js file to be able to register a user to the db
 
 document.getElementById("registerForm").addEventListener("submit", async(eve) =>{
 

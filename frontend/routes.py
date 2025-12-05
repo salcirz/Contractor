@@ -1,5 +1,7 @@
 from flask import Flask,request, render_template
 
+#this file was used for sprint one that was used for a simple search. 
+
 import mysql.connector
 
 app = Flask(__name__, template_folder=".")
